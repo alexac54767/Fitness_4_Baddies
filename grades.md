@@ -12,7 +12,7 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
-            background-color: #128ca7;
+            background-color: #4682B4;
             border: white;
             color: white;
             padding: 15px 32px;
