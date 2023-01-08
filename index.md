@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<a href="https://www.healthline.com/nutrition/10-benefits-of-exercise" class="button">Why you should workout! (click) </a>
+<a href="https://www.healthline.com/nutrition/10-benefits-of-exercise" class="button">Why should you workout?! (click) </a>
 
 </body>
 </html>
@@ -41,7 +41,7 @@ box1 {
   padding: 50px;
   margin: 50px;
   position: absolute;
-  top: 650px;
+  top: 690px;
   left: -160;
 }
 box2 {
@@ -52,7 +52,7 @@ box2 {
   padding: 50px;
   margin: 50px;
   position: absolute;
-  top: 650px;
+  top: 690px;
   left: 165;
 }
 box3 {
@@ -63,7 +63,7 @@ box3 {
   padding: 50px;
   margin: 50px;
   position: absolute;
-  top: 650px;
+  top: 690px;
   left: 490;
 }
 
