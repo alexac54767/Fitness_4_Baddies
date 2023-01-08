@@ -52,7 +52,7 @@
 <br>
 <br>
 
-<h2>Grades</h2>
+<h2 style="text-align:center">Grades</h2>
 
 <table>
   <tr>
