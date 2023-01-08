@@ -68,5 +68,7 @@
     <td></td>
     <td></td>
     <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
