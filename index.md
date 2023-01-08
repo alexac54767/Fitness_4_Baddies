@@ -1,4 +1,6 @@
-> Description of site
+> This page is made to assist baddies in their fitness life. It will help you if you need to keep track of your independent PE, or if you simply need inspo for a workout to do.
+
+<br>
 
 <html>
 <head>
@@ -39,7 +41,7 @@ box1 {
   padding: 50px;
   margin: 50px;
   position: absolute;
-  top: 425px;
+  top: 650px;
   left: -160;
 }
 box2 {
@@ -50,7 +52,7 @@ box2 {
   padding: 50px;
   margin: 50px;
   position: absolute;
-  top: 425px;
+  top: 650px;
   left: 165;
 }
 box3 {
@@ -61,7 +63,7 @@ box3 {
   padding: 50px;
   margin: 50px;
   position: absolute;
-  top: 425px;
+  top: 650px;
   left: 490;
 }
 
@@ -71,11 +73,6 @@ box3 {
 
 <h2 style="text-align:center">About the Pages:</h2>
 
-<br>
-<br>
-<br>
-<br>
-<br>
 
 <box1 style="text-align:center">
     <h1>Workout Log</h1>
