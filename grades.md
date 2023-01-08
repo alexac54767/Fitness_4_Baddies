@@ -21,13 +21,13 @@
 </style>
 <form class="box">
   <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John" id="firstinput"><br>
+  <input type="text" id="fnamegrades" name="fname" value="John" id="firstinput"><br>
   <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe"><br><br>
+  <input type="text" id="lnamegrades" name="lname" value="Doe"><br><br>
   <label for="date">Date of Completion:</label><br>
-  <input type="text" id="date" name="date" value="4/11"><br>
+  <input type="text" id="dategrades" name="date" value="4/11"><br>
   <label for="numhours">Number of Hours Completed:</label><br>
-  <input type="text" id="hours" name="hours" value="3"><br><br>
+  <input type="text" id="hoursgrades" name="hours" value="3"><br><br>
   <input type="submit" value="Submit">
 </form> 
 
