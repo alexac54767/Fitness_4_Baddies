@@ -9,7 +9,7 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
-            background-color: #128ca7;
+            background-color: #4682B4;
             border: white;
             color: white;
             padding: 15px 32px;
@@ -18,15 +18,15 @@
 </style>
 <form class="box">
   <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John" id="firstinput"><br>
+  <input type="text" id="fnamework" name="fname" value="John" id="firstinput"><br>
   <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe"><br><br>
+  <input type="text" id="lnamework" name="lname" value="Doe"><br><br>
   <label for="workout">Type of Workout:</label><br>
-  <input type="text" id="workout" name="workout" value="Swimming"><br>
+  <input type="text" id="workoutwork" name="workout" value="Swimming"><br>
   <label for="date">Date of Completion:</label><br>
-  <input type="text" id="date" name="date" value="1/8"><br>
+  <input type="text" id="datework" name="date" value="1/8"><br>
   <label for="numhours">Duration of workout (hours):</label><br>
-  <input type="text" id="hours" name="hours" value="10"><br><br>
+  <input type="text" id="hourswork" name="hours" value="10"><br><br>
   <input type="submit" value="Submit">
 </form> 
 
