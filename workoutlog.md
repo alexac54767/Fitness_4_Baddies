@@ -16,17 +16,17 @@
             text-align: center;
         }
 </style>
-<form class="box">
+<form class="box"> 
   <label for="fname">First name:</label><br>
-  <input type="text" id="fnamework" name="fname" value="John" id="firstinput"><br>
+  <input type="fname" id="fnamework" name="fname" value="John" id="firstinput"><br>
   <label for="lname">Last name:</label><br>
-  <input type="text" id="lnamework" name="lname" value="Doe"><br><br>
+  <input type="lname" id="lnamework" name="lname" value="Doe"><br><br>
   <label for="workout">Type of Workout:</label><br>
-  <input type="text" id="workoutwork" name="workout" value="Swimming"><br>
+  <input type="workout" id="workoutwork" name="workout" value="Swimming"><br>
   <label for="date">Date of Completion:</label><br>
-  <input type="text" id="datework" name="date" value="1/8"><br>
+  <input type="date" id="datework" name="date" value="1/8"><br>
   <label for="numhours">Duration of workout (hours):</label><br>
-  <input type="text" id="hourswork" name="hours" value="10"><br><br>
+  <input type="hours" id="hourswork" name="hours" value="10"><br><br>
   <input type="submit" value="Submit">
 </form> 
 
