@@ -3,11 +3,12 @@ import json
 
 class User:    
 
-    def __init__(self, name, uid, password, workouts):
+    def __init__(self, name, uid, password, workouts, grades):
         self._name = name    # variables with self prefix become part of the object, 
         self._uid = uid
         self.set_password(password)
         self._workouts = workouts
+        self._grades = grades
     
     @property
     def name(self):
@@ -42,6 +43,15 @@ class User:
     def workouts(self, workouts):
         self._workouts = workouts
 
+    @property
+    def grades(self):
+        return self._grades
+    
+    # a setter function, allows name to be updated after initial object creation
+    @grades.setter
+    def grades(self, grades):
+        self._grades = grades
+
     
     
     # dictionary is customized, removing password for security purposes
@@ -50,7 +60,8 @@ class User:
         dict = {
             "name" : self.name,
             "uid" : self.uid,
-            "workouts" : self.workouts
+            "workouts" : self.workouts,
+            "grades" : self.grades
         }
         return dict
     
@@ -71,12 +82,12 @@ class User:
     
     # output command to recreate the object, uses attribute directly
     def __repr__(self):
-        return f'User(name={self._name}, uid={self._uid}, password={self._password}, workouts={self._workouts})'
+        return f'User(name={self._name}, uid={self._uid}, password={self._password}, workouts={self._workouts}, grades={self._grades})'
 
 
 if __name__ == "__main__":
-    u1 = User(name='Thomas Edison', uid='toby', password='123toby', workouts='burpees, swimming')
-    u2 = User(name='Ava Carlson', uid='coolcat', password='welovecoolcats4', workouts='sprinting, cheer')
+    u1 = User(name='Thomas Edison', uid='toby', password='123toby', workouts='burpees, swimming', grades='A')
+    u2 = User(name='Ava Carlson', uid='coolcat', password='welovecoolcats4', workouts='sprinting, cheer', grades='B')
     print("JSON ready string:\n", u1, "\n") 
     print("Raw Variables of object:\n", vars(u1), "\n") 
     print("Raw Attributes and Methods of object:\n", dir(u1), "\n")
