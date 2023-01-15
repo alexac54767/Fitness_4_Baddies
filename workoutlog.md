@@ -16,7 +16,7 @@
             text-align: center;
         }
 </style>
-<form class="box"> 
+<form class="box" action="/login-workout-backend.py" method="post"> 
   <label for="fname">First name:</label><br>
   <input type="fname" id="fnamework" name="fname" value="John" id="firstinput"><br>
   <label for="lname">Last name:</label><br>
