@@ -47,6 +47,10 @@
 <br>
 <br>
 
+
+<!--<script src="myscripts.js"></script>-->
+<!---form action="/action_page.php"--->
+
 <h2 style="text-align:center">Workout Log</h2>
 
 <table>
@@ -72,3 +76,6 @@
     <td></td>
   </tr>
 </table>
+
+
+
