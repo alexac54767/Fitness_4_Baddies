@@ -1,3 +1,29 @@
+<style>
+.button2 {
+  background-color: #4682B4;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  justify-content: center;
+  position: absolute;
+  top: 1100px;
+  left: 290px
+}
+
+</style>
+<body>
+
+<a href="" class="button2">LOGIN </a>
+
+</body>
+
+
 > This page is made to assist baddies in their fitness life. It will help you if you need to keep track of your independent PE, or if you simply need inspo for a workout to do.
 
 <br>
@@ -94,31 +120,4 @@ box3 {
 
 <br>
 
-<html>
-<head>
-<style>
-.button2 {
-  background-color: #4682B4;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: flex;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  justify-content: center;
-  position: absolute;
-  top: 1100px;
-  left: 290px
-}
 
-</style>
-</head>
-<body>
-
-<a href="" class="button2">LOGIN </a>
-
-</body>
-</html>
