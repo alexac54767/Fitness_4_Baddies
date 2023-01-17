@@ -1,3 +1,5 @@
+<html>
+<head>
 <style>
 .button2 {
   background-color: #4682B4;
@@ -17,12 +19,13 @@
 }
 
 </style>
+</head>
 <body>
 
 <a href="" class="button2">LOGIN </a>
 
 </body>
-
+</html>
 
 > This page is made to assist baddies in their fitness life. It will help you if you need to keep track of your independent PE, or if you simply need inspo for a workout to do.
 
