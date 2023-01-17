@@ -3,12 +3,11 @@ import json
 
 class User:    
 
-    def __init__(self, name, uid, password, workouts, grades):
+    def __init__(self, name, uid, password, workouts):
         self._name = name    # variables with self prefix become part of the object, 
         self._uid = uid
         self.set_password(password)
         self._workouts = workouts
-        self._grades = grades
     
     @property
     def name(self):
@@ -43,15 +42,6 @@ class User:
     def workouts(self, workouts):
         self._workouts = workouts
 
-    @property
-    def grades(self):
-        return self._grades
-    
-    # a setter function, allows name to be updated after initial object creation
-    @grades.setter
-    def grades(self, grades):
-        self._grades = grades
-
     
     
     # dictionary is customized, removing password for security purposes
@@ -60,8 +50,7 @@ class User:
         dict = {
             "name" : self.name,
             "uid" : self.uid,
-            "workouts" : self.workouts,
-            "grades" : self.grades
+            "workouts" : self.workouts
         }
         return dict
     
@@ -82,12 +71,42 @@ class User:
     
     # output command to recreate the object, uses attribute directly
     def __repr__(self):
-        return f'User(name={self._name}, uid={self._uid}, password={self._password}, workouts={self._workouts}, grades={self._grades})'
-
+        return f'User(name={self._name}, uid={self._uid}, password={self._password}, workouts={self._workouts})'
+        
+def tester(users, uid, psw):
+    result = None
+    for user in users:
+        # test for match in database
+        if user.uid == uid and user.is_password(psw): # check for match
+            print("* ", end="")
+            result = user
+        # print using __str__ method
+        print(str(user))
+    return result    
 
 if __name__ == "__main__":
-    u1 = User(name='Thomas Edison', uid='toby', password='123toby', workouts='burpees, swimming', grades='A')
-    u2 = User(name='Ava Carlson', uid='coolcat', password='welovecoolcats4', workouts='sprinting, cheer', grades='B')
+    u1 = User(name='Thomas Edison', uid='toby', password='123toby', workouts='burpees, swimming')
+    u2 = User(name='Ava Carlson', uid='coolcat', password='welovecoolcats4', workouts='sprinting, cheer')
+    u3 = User(name='Tom Holland', uid='thebestspiderman', password='peter1', workouts='climbing, boxing')
+
+    # put user objects in list for convenience
+    users = [u1, u2, u3]
+
+    # Find user
+    print("Test 1, find user 3")
+    u = tester(users, u3.uid, "peter1")
+
+    # Change user
+    print("Test 2, change user 3")
+    u.name = "Andrew Garfield"
+    u.uid = "spidermanalso"
+    u.workouts = "punching"
+    u.set_password("peter3")
+    u = tester(users, u.uid, "peter3")
+
+
+
+
     print("JSON ready string:\n", u1, "\n") 
     print("Raw Variables of object:\n", vars(u1), "\n") 
     print("Raw Attributes and Methods of object:\n", dir(u1), "\n")
