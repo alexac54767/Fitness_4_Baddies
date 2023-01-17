@@ -16,7 +16,7 @@
             text-align: center;
         }
 </style>
-<form class="box" action="/login-workout-backend.py" method="post"> 
+<form class="box"> 
   <label for="fname">First name:</label><br>
   <input type="fname" id="fnamework" name="fname" value="John" id="firstinput"><br>
   <label for="lname">Last name:</label><br>
@@ -70,9 +70,144 @@
   </tr>
   <tr>
     <td></td>
-    
+  
   </tr>
 </table>
 
 
+<table>
+  <thead>
+  <tr>
+   <th>First Name</th>
+    <th>Last Name</th>
+    <th>Type of Workout</th>
+    <th>Date of Completion</th>
+    <th>Duration of Workout (hours)</th>
+  </tr>
+  </thead>
+  <tbody id="table">
+    <!-- javascript generated data -->
+  </tbody>
+</table>
+
+
+
+<script>
+  function create_User(){
+    // extract data from inputs
+    const first_name = document.getElementById("fnamework").value;
+    const last_name = document.getElementById("lnamework").value;
+    const workout = document.getElementById("workoutwork").value;
+    const date = document.getElementById("datework").value;
+    const numhours = document.getElementById("hourswork").value;
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer my-token',
+        },
+    };
+    //url for Create API
+    const url='/crud_api/create/' + first_name + '/' + last_name+ '/' + workout + '/' + date + '/' + numhours;
+    //Async fetch API call to the database to create a new user
+    fetch(url, requestOptions).then(response => {
+        // prepare HTML search result container for new output
+        const resultContainer = document.getElementById("result");
+        // trap error response from Web API
+        if (response.status !== 200) {
+            const errorMsg = 'Database response error: ' + response.status;
+            console.log(errorMsg);
+            // Email must be unique, no duplicates allowed
+            document.getElementById("pswError").innerHTML =
+                "Email already exists in the table";
+            return;
+        }
+        // response contains valid result
+        response.json().then(data => {
+            console.log(data);
+            //add a table row for the new/created userId
+            const tr = document.createElement("tr");
+            for (let key in data) {
+                if (key !== 'query') {
+                    //create a DOM element for the data(cells) in table rows
+                    const td = document.createElement("td");
+                    console.log(data[key]);
+                    //truncate the displayed password to length 20
+                    if (key === 'password'){
+                        td.innerHTML = data[key].substring(0,17)+"...";
+                    }
+                    else{
+                        td.innerHTML = data[key];}
+                    //add the DOM data element to the row
+                    tr.appendChild(td);
+                }
+            }
+            //append the DOM row to the table
+            table.appendChild(tr);
+        })
+    })
+}
+</script>
+
+<script>
+  
+// Static json, this can be used to test data prior to API and Model being ready
+const json = '[{"_name": "Thomas Edison", "_uid": "toby"}, {"_name": "Nicholas Tesla", "_uid": "nick"}, {"_name": "John Mortensen", "_uid": "jm1021"}, {"_name": "Eli Whitney", "_uid": "eli"}, {"_name": "Hedy Lemarr", "_uid": "hedy"}]';
+
+// Convert JSON string to JSON object
+const data = JSON.parse(json);
+
+// prepare HTML result container for new output
+const table = document.getElementById("table");
+data.forEach(user => {
+    // build a row for each user
+    const tr = document.createElement("tr");
+
+    // td's to build out each column of data
+    const first_name = document.createElement("td");
+    const last_name = document.createElement("td");
+    const workout = document.createElement("td");
+    const date = document.createElement("td");
+    const numhours = document.createElement("td");
+           
+    // add content from user data          
+    first_name.innerHTML = user._firstname; 
+    last_name.innerHTML = user._lastname; 
+    workout.innerHTML = user._workout; 
+    date.innerHTML = user._date; 
+    numhours.innerHTML = user._numhours; 
+
+    // add action for update button
+    var updateBtn = document.createElement('input');
+    updateBtn.type = "button";
+    updateBtn.className = "button";
+    updateBtn.value = "Update";
+    updateBtn.style = "margin-right:16px";
+    updateBtn.onclick = function () {
+      alert("Update: " + user._uid);
+    };
+    action.appendChild(updateBtn);
+
+    // add action for delete button
+    var deleteBtn = document.createElement('input');
+    deleteBtn.type = "button";
+    deleteBtn.className = "button";
+    deleteBtn.value = "Delete";
+    deleteBtn.style = "margin-right:16px"
+    deleteBtn.onclick = function () {
+      alert("Delete: " + user._uid);
+    };
+    action.appendChild(deleteBtn);  
+
+    // add data to row
+    tr.appendChild(first_name);
+    tr.appendChild(last_name);
+    tr.appendChild(workout);
+    tr.appendChild(date);
+    tr.appendChild(numhours);
+
+    // add row to table
+    table.appendChild(tr);
+});
+</script>
 
