@@ -7,7 +7,73 @@ from __init__ import app, db
 from sqlalchemy.exc import IntegrityError
 from werkzeug.security import generate_password_hash, check_password_hash
 
-class User:    
+
+# Define the Post class to manage actions in 'posts' table,  with a relationship to 'users' table
+class Post(db.Model):
+    __tablename__ = 'posts'
+
+    # Define the Notes schema
+    id = db.Column(db.Integer, primary_key=True)
+    note = db.Column(db.Text, unique=False, nullable=False)
+    image = db.Column(db.String, unique=False)
+    # Define a relationship in Notes Schema to userID who originates the note, many-to-one (many notes to one user)
+    userID = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    # Constructor of a Notes object, initializes of instance variables within object
+    def __init__(self, id, note, image):
+        self.userID = id
+        self.note = note
+        self.image = image
+
+    # Returns a string representation of the Notes object, similar to java toString()
+    # returns string
+    def __repr__(self):
+        return "Notes(" + str(self.id) + "," + self.note + "," + str(self.userID) + ")"
+
+    # CRUD create, adds a new record to the Notes table
+    # returns the object added or None in case of an error
+    def create(self):
+        try:
+            # creates a Notes object from Notes(db.Model) class, passes initializers
+            db.session.add(self)  # add prepares to persist person object to Notes table
+            db.session.commit()  # SqlAlchemy "unit of work pattern" requires a manual commit
+            return self
+        except IntegrityError:
+            db.session.remove()
+            return None
+
+    # CRUD read, returns dictionary representation of Notes object
+    # returns dictionary
+    def read(self):
+        # encode image
+        path = app.config['UPLOAD_FOLDER']
+        file = os.path.join(path, self.image)
+        file_text = open(file, 'rb')
+        file_read = file_text.read()
+        file_encode = base64.encodebytes(file_read)
+        
+        return {
+            "id": self.id,
+            "userID": self.userID,
+            "note": self.note,
+            "image": self.image,
+            "base64": str(file_encode)
+        }
+
+
+
+class User(db.Model):   
+    _tablename_ = 'users' 
+
+    id = db.Column(db.Integer, primary_key=True)
+    _name = db.Column(db.String(255), unique=False, nullable=False)
+    _uid = db.Column(db.String(255), unique=True, nullable=False)
+    _password = db.Column(db.String(255), unique=False, nullable=False)
+    _dob = db.Column(db.Date)
+
+    # Defines a relationship between User record and Notes table, one-to-many (one user to many notes)
+    posts = db.relationship("Post", cascade='all, delete', backref='users', lazy=True)
+
 
     def __init__(self, name, uid, password, workouts):
         self._name = name    # variables with self prefix become part of the object, 
@@ -49,7 +115,6 @@ class User:
         self._workouts = workouts
 
     
-    
     # dictionary is customized, removing password for security purposes
     @property
     def dictionary(self):
@@ -73,52 +138,78 @@ class User:
     
     # output content using json dumps, this is ready for API response
     def __str__(self):
-        return json.dumps(self.dictionary)
+        return json.dumps(self.read())
     
-    # output command to recreate the object, uses attribute directly
-    def __repr__(self):
-        return f'User(name={self._name}, uid={self._uid}, password={self._password}, workouts={self._workouts})'
-        
-def tester(users, uid, psw):
-    result = None
-    for user in users:
-        # test for match in database
-        if user.uid == uid and user.is_password(psw): # check for match
-            print("* ", end="")
-            result = user
-        # print using __str__ method
-        print(str(user))
-    return result    
+   
+    # CRUD create/add a new record to the table
+    # returns self or None on error
+    def create(self):
+        try:
+            # creates a person object from User(db.Model) class, passes initializers
+            db.session.add(self)  # add prepares to persist person object to Users table
+            db.session.commit()  # SqlAlchemy "unit of work pattern" requires a manual commit
+            return self
+        except IntegrityError:
+            db.session.remove()
+            return None
 
-if __name__ == "__main__":
-    u1 = User(name='Thomas Edison', uid='toby', password='123toby', workouts='burpees, swimming')
+    # CRUD read converts self to dictionary
+    # returns dictionary
+    def read(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "uid": self.uid,
+            "workouts": self.workouts,
+        }
+
+    # CRUD update: updates user name, password, phone
+    # returns self
+    def update(self, name="", uid="", password=""):
+        """only updates values with length"""
+        if len(name) > 0:
+            self.name = name
+        if len(uid) > 0:
+            self.uid = uid
+        if len(password) > 0:
+            self.set_password(password)
+        db.session.commit()
+        return self
+
+    # CRUD delete: remove self
+    # None
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+        return None
+
+
+"""Database Creation and Testing """
+
+
+# Builds working data for testing
+def initUsers():
+    """Create database and tables"""
+    db.create_all()
+    """Tester data for table"""
+    u1 = u1 = User(name='Thomas Edison', uid='toby', password='123toby', workouts='burpees, swimming')
     u2 = User(name='Ava Carlson', uid='coolcat', password='welovecoolcats4', workouts='sprinting, cheer')
     u3 = User(name='Tom Holland', uid='thebestspiderman', password='peter1', workouts='climbing, boxing')
+    u4 = User(name='Andrew Garfield', uid='coolspidey', password='peter3', workouts='punching')
+    u5 = User(name='Dylan OBrien', uid='mazerunner', password='wicked', workouts='jogging, boxing')
+    users = [u1, u2, u3, u4, u5]
 
-    # put user objects in list for convenience
-    users = [u1, u2, u3]
-
-    # Find user
-    print("Test 1, find user 3")
-    u = tester(users, u3.uid, "peter1")
-
-    # Change user
-    print("Test 2, change user 3")
-    u.name = "Andrew Garfield"
-    u.uid = "spidermanalso"
-    u.workouts = "punching"
-    u.set_password("peter3")
-    u = tester(users, u.uid, "peter3")
-
-
-
-
-    print("JSON ready string:\n", u1, "\n") 
-    print("Raw Variables of object:\n", vars(u1), "\n") 
-    print("Raw Attributes and Methods of object:\n", dir(u1), "\n")
-    print("Representation to Re-Create the object:\n", repr(u1), "\n") 
-
-    print("JSON ready string:\n", u2, "\n") 
-    print("Raw Variables of object:\n", vars(u2), "\n") 
-    print("Raw Attributes and Methods of object:\n", dir(u2), "\n")
-    print("Representation to Re-Create the object:\n", repr(u2), "\n") 
+    """Builds sample user/note(s) data"""
+    for user in users:
+        try:
+            '''add a few 1 to 4 notes per user'''
+            for num in range(randrange(1, 4)):
+                note = "#### " + user.name + " note " + str(num) + ". \n Generated by test data."
+                user.posts.append(Post(id=user.id, note=note, image='ncs_logo.png'))
+            '''add user/post data to table'''
+            user.create()
+        except IntegrityError:
+            '''fails with bad or duplicate data'''
+            db.session.remove()
+            print(f"Records exist, duplicate email, or error: {user.uid}")
+            
