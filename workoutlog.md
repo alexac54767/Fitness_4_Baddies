@@ -17,10 +17,8 @@
         }
 </style>
 <form class="box"> 
-  <label for="fname">First name:</label><br>
-  <input type="fname" id="fnamework" name="fname" value="John" id="firstinput"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="lname" id="lnamework" name="lname" value="Doe"><br><br>
+  <label for="name">First name:</label><br>
+  <input type="name" id="namework" name="name" value="John"><br>
   <label for="workout">Type of Workout:</label><br>
   <input type="workout" id="workoutwork" name="workout" value="Swimming"><br>
   <label for="date">Date of Completion:</label><br>
@@ -55,8 +53,7 @@
 
 <table>
   <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
+    <th>Name</th>
     <th>Type of Workout</th>
     <th>Date of Completion</th>
     <th>Duration of Workout (hours)</th>
@@ -78,8 +75,7 @@
 <table>
   <thead>
   <tr>
-   <th>First Name</th>
-    <th>Last Name</th>
+   <th>Name</th>
     <th>Type of Workout</th>
     <th>Date of Completion</th>
     <th>Duration of Workout (hours)</th>
@@ -93,8 +89,7 @@
 <script>
   function create_User(){
     // extract data from inputs
-    const first_name = document.getElementById("fnamework").value;
-    const last_name = document.getElementById("lnamework").value;
+    const name = document.getElementById("namework").value;
     const workout = document.getElementById("workoutwork").value;
     const date = document.getElementById("datework").value;
     const numhours = document.getElementById("hourswork").value;
@@ -106,7 +101,7 @@
         },
     };
     //url for Create API
-    const url='/crud_api/create/' + first_name + '/' + last_name+ '/' + workout + '/' + date + '/' + numhours;
+    const url='/crud_api/create/' + name + '/' + workout + '/' + date + '/' + numhours;
     //Async fetch API call to the database to create a new user
     fetch(url, requestOptions).then(response => {
         // prepare HTML search result container for new output
@@ -162,15 +157,13 @@ data.forEach(user => {
     const tr = document.createElement("tr");
 
     // td's to build out each column of data
-    const first_name = document.createElement("td");
-    const last_name = document.createElement("td");
+    const name = document.createElement("td");
     const workout = document.createElement("td");
     const date = document.createElement("td");
     const numhours = document.createElement("td");
            
     // add content from user data          
-    first_name.innerHTML = user._firstname; 
-    last_name.innerHTML = user._lastname; 
+    name.innerHTML = user._name; 
     workout.innerHTML = user._workout; 
     date.innerHTML = user._date; 
     numhours.innerHTML = user._numhours; 
@@ -198,8 +191,7 @@ data.forEach(user => {
     action.appendChild(deleteBtn);  
 
     // add data to row
-    tr.appendChild(first_name);
-    tr.appendChild(last_name);
+    tr.appendChild(name);
     tr.appendChild(workout);
     tr.appendChild(date);
     tr.appendChild(numhours);
