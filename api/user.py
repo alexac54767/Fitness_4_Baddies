@@ -27,7 +27,10 @@ class UserAPI:
                 return {'message': f'User ID is missing, or is less than 2 characters'}, 210
             # look for password 
             password = body.get('password')
-        
+            workouts = body.get('workouts')
+            if workouts is None or len(workouts) < 2:
+                 return {'message': f'Workouts is missing, or is less than 2 characters'}, 210
+                 
             ''' #1: Key code block, setup USER OBJECT '''
             uo = User(name=name, 
                       uid=uid)
