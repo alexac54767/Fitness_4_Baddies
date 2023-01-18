@@ -7,4 +7,4 @@ services:
                         - "8086:8072"
                 volumes:
                         - ./volumes:/volumes
-                restart: unless-stopped
+                restart: unless-stoppedsudo
