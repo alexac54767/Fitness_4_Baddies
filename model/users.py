@@ -61,7 +61,6 @@ class Post(db.Model):
         }
 
 
-
 class User(db.Model):   
     _tablename_ = 'users' 
 
