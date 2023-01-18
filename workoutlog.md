@@ -17,8 +17,8 @@
         }
 </style>
 <form class="box"> 
-  <label for="name">First name:</label><br>
-  <input type="name" id="namework" name="name" value="John"><br>
+  <label for="name">Name:</label><br>
+  <input type="name" id="namework" name="name" value="John Doe"><br>
   <label for="workout">Type of Workout:</label><br>
   <input type="workout" id="workoutwork" name="workout" value="Swimming"><br>
   <label for="date">Date of Completion:</label><br>
