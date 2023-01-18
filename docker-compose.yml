@@ -1,0 +1,10 @@
+version: '3'
+services:
+        web:
+                image: team_baddies_v1
+                build: .
+                ports:
+                        - "8086:8072"
+                volumes:
+                        - ./volumes:/volumes
+                restart: unless-stopped
