@@ -145,7 +145,7 @@
 <script>
   
 // Static json, this can be used to test data prior to API and Model being ready
-const json = '[{"_name": "Thomas Edison", "_uid": "toby"}, {"_name": "Nicholas Tesla", "_uid": "nick"}, {"_name": "John Mortensen", "_uid": "jm1021"}, {"_name": "Eli Whitney", "_uid": "eli"}, {"_name": "Hedy Lemarr", "_uid": "hedy"}]';
+const json = '[{"_name": "Thomas Edison", "_workout": "running", "_date": "12/25/2022", "_numhours": "1"}, {"_name": "Nicholas Tesla", "_workout": "swimming", "_date": "11/06/2022", "_numhours": "3"}, {"_name": "John Mortensen", "_workout": "coding", "_date": "01/18/2023", "_numhours": "5"}, {"_name": "Eli Whitney", "_workout": "weights", "_date": "05/16/2022", "_numhours": "2"}]';
 
 // Convert JSON string to JSON object
 const data = JSON.parse(json);
