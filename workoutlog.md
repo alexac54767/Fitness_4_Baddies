@@ -17,10 +17,8 @@
         }
 </style>
 <form class="box"> 
-  <label for="fname">First name:</label><br>
-  <input type="fname" id="fnamework" name="fname" value="John" id="firstinput"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="lname" id="lnamework" name="lname" value="Doe"><br><br>
+  <label for="name">Name:</label><br>
+  <input type="name" id="namework" name="name" value="John Doe"><br>
   <label for="workout">Type of Workout:</label><br>
   <input type="workout" id="workoutwork" name="workout" value="Swimming"><br>
   <label for="date">Date of Completion:</label><br>
@@ -55,8 +53,7 @@
 
 <table>
   <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
+    <th>Name</th>
     <th>Type of Workout</th>
     <th>Date of Completion</th>
     <th>Duration of Workout (hours)</th>
@@ -78,8 +75,7 @@
 <table>
   <thead>
   <tr>
-   <th>First Name</th>
-    <th>Last Name</th>
+   <th>Name</th>
     <th>Type of Workout</th>
     <th>Date of Completion</th>
     <th>Duration of Workout (hours)</th>
@@ -93,8 +89,7 @@
 <script>
   function create_User(){
     // extract data from inputs
-    const first_name = document.getElementById("fnamework").value;
-    const last_name = document.getElementById("lnamework").value;
+    const name = document.getElementById("namework").value;
     const workout = document.getElementById("workoutwork").value;
     const date = document.getElementById("datework").value;
     const numhours = document.getElementById("hourswork").value;
@@ -106,7 +101,7 @@
         },
     };
     //url for Create API
-    const url='/crud_api/create/' + first_name + '/' + last_name+ '/' + workout + '/' + date + '/' + numhours;
+    const url='/crud_api/create/' + name + '/' + workout + '/' + date + '/' + numhours;
     //Async fetch API call to the database to create a new user
     fetch(url, requestOptions).then(response => {
         // prepare HTML search result container for new output
@@ -150,7 +145,7 @@
 <script>
   
 // Static json, this can be used to test data prior to API and Model being ready
-const json = '[{"_name": "Thomas Edison", "_uid": "toby"}, {"_name": "Nicholas Tesla", "_uid": "nick"}, {"_name": "John Mortensen", "_uid": "jm1021"}, {"_name": "Eli Whitney", "_uid": "eli"}, {"_name": "Hedy Lemarr", "_uid": "hedy"}]';
+const json = '[{"_name": "Thomas Edison", "_workout": "running", "_date": "12/25/2022", "_numhours": "1"}, {"_name": "Nicholas Tesla", "_workout": "swimming", "_date": "11/06/2022", "_numhours": "3"}, {"_name": "John Mortensen", "_workout": "coding", "_date": "01/18/2023", "_numhours": "5"}, {"_name": "Eli Whitney", "_workout": "weights", "_date": "05/16/2022", "_numhours": "2"}]';
 
 // Convert JSON string to JSON object
 const data = JSON.parse(json);
@@ -162,15 +157,13 @@ data.forEach(user => {
     const tr = document.createElement("tr");
 
     // td's to build out each column of data
-    const first_name = document.createElement("td");
-    const last_name = document.createElement("td");
+    const name = document.createElement("td");
     const workout = document.createElement("td");
     const date = document.createElement("td");
     const numhours = document.createElement("td");
            
     // add content from user data          
-    first_name.innerHTML = user._firstname; 
-    last_name.innerHTML = user._lastname; 
+    name.innerHTML = user._name; 
     workout.innerHTML = user._workout; 
     date.innerHTML = user._date; 
     numhours.innerHTML = user._numhours; 
@@ -198,8 +191,7 @@ data.forEach(user => {
     action.appendChild(deleteBtn);  
 
     // add data to row
-    tr.appendChild(first_name);
-    tr.appendChild(last_name);
+    tr.appendChild(name);
     tr.appendChild(workout);
     tr.appendChild(date);
     tr.appendChild(numhours);
@@ -208,67 +200,3 @@ data.forEach(user => {
     table.appendChild(tr);
 });
 </script> 
-
-<!-->
-<script>
-  // prepare HTML result container for new output
-  const resultContainer = document.getElementById("result");
-
-  // prepare fetch options
-  const url = "https://csa.nighthawkcodingsociety.com/api/person/all";
-  const options = {
-    method: 'GET', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'omit', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-  };
-
-  // fetch the API
-  fetch(url, options)
-      // response is a RESTful "promise" on any successful fetch
-    .then(response => {
-      // check for response errors
-      if (response.status !== 200) {
-          const errorMsg = 'Database response error: ' + response.status;
-          console.log(errorMsg);
-          const tr = document.createElement("tr");
-          const td = document.createElement("td");
-          td.innerHTML = errorMsg;
-          tr.appendChild(td);
-          resultContainer.appendChild(tr);
-          return;
-      }
-      // valid response will have json data
-      response.json().then(data => {
-          console.log(data);
-          for (let row in data) {
-            // tr and td build out for each row
-            const tr = document.createElement("tr");
-            const name = document.createElement("td");
-            const id = document.createElement("td");
-            // data is specific to the API
-            name.innerHTML = data[row].name; 
-            id.innerHTML = data[row].email; 
-            // add HTML to container
-            tr.appendChild(name);
-            tr.appendChild(id);
-            resultContainer.appendChild(tr);
-          }
-      })
-  })
-  // catch fetch errors (ie ACCESS to server blocked)
-  .catch(err => {
-    console.error(err);
-    const tr = document.createElement("tr");
-    const td = document.createElement("td");
-    td.innerHTML = err;
-    tr.appendChild(td);
-    resultContainer.appendChild(tr);
-  });
-</script>
-
-
