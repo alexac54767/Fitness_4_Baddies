@@ -28,6 +28,3 @@
 
 <body>
 
-<a href="http://localhost:4001/signup" class="button">Are you a baddie without a login? Click here to sign up! </a>
-
-</body>
