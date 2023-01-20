@@ -160,6 +160,8 @@ class User(db.Model):
             "name": self.name,
             "uid": self.uid,
             "workouts": self.workouts,
+            "age": self.age,
+            "posts": [post.read() for post in self.posts]
         }
 
     # CRUD update: updates user name, password, phone
