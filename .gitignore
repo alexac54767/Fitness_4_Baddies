@@ -8,3 +8,6 @@ model/__pycache__/users.cpython-39.pyc
 =======
 signup.md
 >>>>>>> 535b77ec5a4a4bae0cf4b0312b1d123839b95709
+__pycache__/__init__.cpython-39.pyc
+.gitignore
+model/__pycache__/users.cpython-39.pyc
