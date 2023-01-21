@@ -11,7 +11,7 @@ from model.users import initUsers
 from api.user import user_api # Blueprint import api definition
 
 # setup App pages
-from projects.projects import app_projects # Blueprint directory import projects definition
+# from projects.projects import app_projects # Blueprint directory import projects definition
 
 # register URIs
 app.register_blueprint(user_api) # register api routes
