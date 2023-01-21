@@ -22,3 +22,5 @@ model/__pycache__/users.cpython-39.pyc
 .gitignore
 model/__pycache__/users.cpython-39.pyc
 api/backupuser.py
+api/__pycache__/user.cpython-39.pyc
+model/__pycache__/users.cpython-39.pyc
