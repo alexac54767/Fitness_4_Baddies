@@ -77,7 +77,7 @@ class User(db.Model):
     _name = db.Column(db.String(255), unique=False, nullable=False)
     _uid = db.Column(db.String(255), unique=True, nullable=False)
     _password = db.Column(db.String(255), unique=False, nullable=False)
-    _workouts = db.Column(db.String(255), unique=False, nullable=False)
+    _dob = db.Column(db.Date)
 
     # Defines a relationship between User record and Notes table, one-to-many (one user to many notes)
     posts = db.relationship("Post", cascade='all, delete', backref='users', lazy=True)
@@ -168,11 +168,7 @@ class User(db.Model):
             "id": self.id,
             "name": self.name,
             "uid": self.uid,
-<<<<<<< HEAD
             "dob": self.dob,
-=======
-            "workouts": self.workouts,
->>>>>>> bba98daa37bdc265e45d5fa1b88ad9d6ed0e4f8c
             "age": self.age,
             "posts": [post.read() for post in self.posts]
         }
