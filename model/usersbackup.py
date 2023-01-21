@@ -1,4 +1,3 @@
-""" database dependencies to support sqliteDB examples """
 from random import randrange
 from datetime import date
 import os, base64
@@ -8,8 +7,6 @@ from __init__ import app, db
 from sqlalchemy.exc import IntegrityError
 from werkzeug.security import generate_password_hash, check_password_hash
 
-
-''' Tutorial: https://www.sqlalchemy.org/library.html#tutorials, try to get into Python shell and follow along '''
 
 # Define the Post class to manage actions in 'posts' table,  with a relationship to 'users' table
 class Post(db.Model):
@@ -64,15 +61,9 @@ class Post(db.Model):
         }
 
 
-# Define the User class to manage actions in the 'users' table
-# -- Object Relational Mapping (ORM) is the key concept of SQLAlchemy
-# -- a.) db.Model is like an inner layer of the onion in ORM
-# -- b.) User represents data we want to store, something that is built on db.Model
-# -- c.) SQLAlchemy ORM is layer on top of SQLAlchemy Core, then SQLAlchemy engine, SQL
-class User(db.Model):
-    __tablename__ = 'users'  # table name is plural, class name is singular
+class User(db.Model):   
+    _tablename_ = 'users' 
 
-    # Define the User schema with "vars" from object
     id = db.Column(db.Integer, primary_key=True)
     _name = db.Column(db.String(255), unique=False, nullable=False)
     _uid = db.Column(db.String(255), unique=True, nullable=False)
@@ -82,14 +73,13 @@ class User(db.Model):
     # Defines a relationship between User record and Notes table, one-to-many (one user to many notes)
     posts = db.relationship("Post", cascade='all, delete', backref='users', lazy=True)
 
-    # constructor of a User object, initializes the instance variables within object (self)
-    def __init__(self, name, uid, password="123qwerty", dob=date.today()):
+
+    def __init__(self, name, uid, password, workouts):
         self._name = name    # variables with self prefix become part of the object, 
         self._uid = uid
         self.set_password(password)
-        self._dob = dob
-
-    # a name getter method, extracts name from object
+        self._workouts = workouts
+    
     @property
     def name(self):
         return self._name
@@ -113,10 +103,27 @@ class User(db.Model):
     def is_uid(self, uid):
         return self._uid == uid
     
+    
     @property
-    def password(self):
-        return self._password[0:10] + "..." # because of security only show 1st characters
+    def workouts(self):
+        return self._workouts
+    
+    # a setter function, allows name to be updated after initial object creation
+    @workouts.setter
+    def workouts(self, workouts):
+        self._workouts = workouts
 
+    
+    # dictionary is customized, removing password for security purposes
+    @property
+    def dictionary(self):
+        dict = {
+            "name" : self.name,
+            "uid" : self.uid,
+            "workouts" : self.workouts
+        }
+        return dict
+    
     # update password, this is conventional setter
     def set_password(self, password):
         """Create a hashed password."""
@@ -128,27 +135,11 @@ class User(db.Model):
         result = check_password_hash(self._password, password)
         return result
     
-    # dob property is returned as string, to avoid unfriendly outcomes
-    @property
-    def dob(self):
-        dob_string = self._dob.strftime('%m-%d-%Y')
-        return dob_string
-    
-    # dob should be have verification for type date
-    @dob.setter
-    def dob(self, dob):
-        self._dob = dob
-    
-    @property
-    def age(self):
-        today = date.today()
-        return today.year - self._dob.year - ((today.month, today.day) < (self._dob.month, self._dob.day))
-    
-    # output content using str(object) in human readable form, uses getter
     # output content using json dumps, this is ready for API response
     def __str__(self):
         return json.dumps(self.read())
-
+    
+   
     # CRUD create/add a new record to the table
     # returns self or None on error
     def create(self):
@@ -168,9 +159,7 @@ class User(db.Model):
             "id": self.id,
             "name": self.name,
             "uid": self.uid,
-            "dob": self.dob,
-            "age": self.age,
-            "posts": [post.read() for post in self.posts]
+            "workouts": self.workouts,
         }
 
     # CRUD update: updates user name, password, phone
@@ -202,12 +191,11 @@ def initUsers():
     """Create database and tables"""
     db.create_all()
     """Tester data for table"""
-    u1 = User(name='Thomas Edison', uid='toby', password='123toby', dob=date(1847, 2, 11))
-    u2 = User(name='Nicholas Tesla', uid='niko', password='123niko')
-    u3 = User(name='Alexander Graham Bell', uid='lex', password='123lex')
-    u4 = User(name='Eli Whitney', uid='whit', password='123whit')
-    u5 = User(name='John Mortensen', uid='jm1021', dob=date(1959, 10, 21))
-
+    u1 = u1 = User(name='Thomas Edison', uid='toby', password='123toby', workouts='burpees, swimming')
+    u2 = User(name='Ava Carlson', uid='coolcat', password='welovecoolcats4', workouts='sprinting, cheer')
+    u3 = User(name='Tom Holland', uid='thebestspiderman', password='peter1', workouts='climbing, boxing')
+    u4 = User(name='Andrew Garfield', uid='coolspidey', password='peter3', workouts='punching')
+    u5 = User(name='Dylan OBrien', uid='mazerunner', password='wicked', workouts='jogging, boxing')
     users = [u1, u2, u3, u4, u5]
 
     """Builds sample user/note(s) data"""
