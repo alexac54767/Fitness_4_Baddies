@@ -77,6 +77,7 @@
 <form class="box"> 
   <label for="quote">Quote/Inspiration:</label><br>
   <input type="quote" id="quoteinspo" name="quote" value="You got this!"><br>
+  <input type="submit" value="Submit">
 </form> 
 
 </body>
