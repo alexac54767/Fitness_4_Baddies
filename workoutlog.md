@@ -71,7 +71,7 @@
   </tr>
 </table>
 
-
+<!-->
 <table>
   <thead>
   <tr>
@@ -83,8 +83,8 @@
   </thead>
   <tbody id="table">
     <!-- javascript generated data -->
-  </tbody>
-</table>
+  <!--</tbody>
+</table> 
 
 <script>
   function create_User(){
