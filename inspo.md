@@ -82,4 +82,38 @@
 
 </body>
 
+<style>
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    }
+    tr:nth-child(even) {
+    background-color: #4F4B4C;
+    }
+</style>
+
+<br>
+<br>
+<br>
+
+
+<!--<script src="myscripts.js"></script>-->
+<!---form action="/action_page.php"--->
+
+<h2 style="text-align:center">Workout Log</h2>
+
+<table>
+  <tr>
+    <th>Quotes</th>
+  </tr>
+  <tr>
+    <td>"Hard work beats talent when talent doesn't work hard"</td>
+  </tr>
+  <tr>
+    <td></td>
+  
+  </tr>
+</table>
+
 
