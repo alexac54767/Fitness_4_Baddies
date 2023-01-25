@@ -106,9 +106,13 @@
 <table>
   <tr>
     <th>Quotes</th>
+    <th> </th>
+    <th> </th>
   </tr>
   <tr>
     <td>"Hard work beats talent when talent doesn't work hard"</td>
+    <td>Edit</td>
+    <td>Delete</td>
   </tr>
 </table>
 

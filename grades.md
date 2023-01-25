@@ -60,12 +60,16 @@
     <th>Last Name</th>
     <th>Total Hours</th>
     <th>Grade</th>
+    <th> </th>
+    <th> </th>
   </tr>
   <tr>
     <td>Alexa</td>
     <td>Carlson</td>
     <td>5</td>
     <td>B</td>
+    <td>Edit</td>
+    <td>Delete</td>
   </tr>
   <tr>
     <td></td>

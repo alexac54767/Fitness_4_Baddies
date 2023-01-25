@@ -53,10 +53,13 @@
 
 <table>
   <tr>
-    <th>Name</th>
+    <th>First Name</th>
+    <th>Last Name</th>
     <th>Type of Workout</th>
     <th>Date of Completion</th>
     <th>Duration of Workout (hours)</th>
+    <th> </th>
+    <th> </th>
   </tr>
   <tr>
     <td>Lydia</td>
@@ -64,15 +67,13 @@
     <td>Climbing</td>
     <td>2/13</td>
     <td>3</td>
-  </tr>
-  <tr>
-    <td></td>
-  
+    <td>Edit</td>
+    <td>Delete</td>
   </tr>
 </table>
 
-<!-->
-<table>
+
+<!---><table>
   <thead>
   <tr>
    <th>Name</th>
@@ -82,8 +83,8 @@
   </tr>
   </thead>
   <tbody id="table">
-    <!-- javascript generated data -->
-  <!--</tbody>
+    <!-- javascript generated data
+</tbody>
 </table> 
 
 <script>
@@ -200,3 +201,4 @@ data.forEach(user => {
     table.appendChild(tr);
 });
 </script> 
+<--->

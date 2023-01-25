@@ -5,7 +5,7 @@
 
 <body>
 
-<h2 style="text-align:center">Input the Duration of Your Workout Below</h2>
+<h2 style="text-align:center">Input Your Workout Below</h2>
 <style>
     form {
             display: block;
@@ -40,12 +40,16 @@
     <th>Exercise</th>
     <th>Time</th>
     <th>Sets/Reps</th>
+    <th> </th>
+    <th> </th>
   </tr>
   <tr>
     <td>Climbing</td>
     <td>Endurance</td>
     <td>4 minutes</td>
     <td>4 climbs</td>
+    <td>Edit</td>
+    <td>Delete</td>
   </tr>
   <tr>
     <td></td>
