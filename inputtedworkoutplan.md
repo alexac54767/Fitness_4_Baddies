@@ -2,7 +2,10 @@
 
 # Workouts by you guys!
 
-<h2 style="text-align:center">We're Hyping the Baddies Up! Input Inspirational Quotes Here!</h2>
+
+<body>
+
+<h2 style="text-align:center">Input the Duration of Your Workout Below</h2>
 <style>
     form {
             display: block;
@@ -16,8 +19,15 @@
         }
 </style>
 <form class="box"> 
-  <label for="quote">Quote/Inspiration:</label><br>
-  <input type="quote" id="quoteinspo" name="quote" value="You got this!"><br>
+  <label for="workout">Workout:</label><br>
+  <input type="workout" id="workout2" name="workout" value="Burpees"><br>
+  <label for="Exercise">Type of Exercise:</label><br>
+  <input type="exercise" id="exercise" name="exercise" value="Endurance"><br>
+  <label for="Time">Duration of workout:</label><br>
+  <input type="hours" id="hours" name="hours" value="2"><br>
+  <label for="sets">Number of sets/reps:</label><br>
+  <input type="sets" id="sets" name="sets" value="12"><br><br>
+  <input type="submit" value="Submit">
 </form> 
 
 </body>
