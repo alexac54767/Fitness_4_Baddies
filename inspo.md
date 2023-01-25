@@ -110,10 +110,6 @@
   <tr>
     <td>"Hard work beats talent when talent doesn't work hard"</td>
   </tr>
-  <tr>
-    <td></td>
-  
-  </tr>
 </table>
 
 
