@@ -135,7 +135,7 @@
   const resultContainer = document.getElementById("result");
 
   // prepare fetch options
-  const url = "http://localhost:4001/api/users";
+  const url = "http://localhost:4002/api/users";
   const options = {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
