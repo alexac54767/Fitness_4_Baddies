@@ -301,7 +301,8 @@ class User(db.Model):
             "dob": self.dob,
             "age": self.age,
             "workouts": [workouts.read() for workouts in self.workouts],
-            "inspo": [inspo.read() for inspo in self.inspo]
+            "inspo": [inspo.read() for inspo in self.inspo],
+            "ISPE": [ISPE.read() for ISPE in self.ISPE]
         }
 
     # CRUD update: updates user name, password, phone
