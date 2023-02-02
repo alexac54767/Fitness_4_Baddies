@@ -334,9 +334,9 @@ def initUsers():
     """Create database and tables"""
     db.create_all()
     """Tester data for table"""
-    u1 = User(name='Alexa Carlson', uid='alexa', password='123lex', dob=date(2006, 5, 16), inspo="Work hard pls")
-    u2 = User(name='Ava Carlson', uid='ava', password='123ava', inspo="SWEAT WOO")
-    u3 = User(name='Tom Holland', uid='tommy', password='123tom', dob=date(1996, 6, 1), inspo="No steroids needed")
+    u1 = User(name='Alexa Carlson', uid='alexa', password='123lex', dob=date(2006, 5, 16))
+    u2 = User(name='Ava Carlson', uid='ava', password='123ava')
+    u3 = User(name='Tom Holland', uid='tommy', password='123tom', dob=date(1996, 6, 1))
     u4 = User(name='Dylan Obrien', uid='dylan', password='123dyl', dob=date(1991, 8, 26))
     u5 = User(name='John Mortensen', uid='jm1021', dob=date(1959, 10, 21))
 
