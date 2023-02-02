@@ -20,7 +20,7 @@ class ISPE(db.Model):
     name = db.Column(db.Text, unique=False, nullable=False)
     duration = db.Column(db.Integer, unique=False, nullable=False)
     date = db.Column(db.Date)
-    grade = db.Column(db.Integer, unique=False, nullable=False)
+    grade = db.Column(db.Text, unique=False, nullable=False)
 
     
     # Define a relationship in Notes Schema to userID who originates the note, many-to-one (many notes to one user)
@@ -119,6 +119,8 @@ class inspo(db.Model):
         #file_encode = base64.encodebytes(file_read)
         
         return {
+            "id": self.id,
+            "userID": self.userID,
             "quote": self.quote
         }
 
