@@ -352,7 +352,7 @@ def initUsers():
                 user.workouts.append(workouts(id=user.id, exercise='burpees', duration='2', date=date(2023, 1, 20)))
                 user.inspo.append(inspo(id=user.id, quote='Hard work beats talent when talent does not work hard'))
                 user.ISPE.append(ISPE(id=user.id, name='Alexa', duration='3', date=date(2023, 2, 2), grade='A'))
-            '''add user/workouts/inspo data to table'''
+            '''add user/workouts/inspo/ISPE data to table'''
             user.create()
         except IntegrityError:
             '''fails with bad or duplicate data'''
