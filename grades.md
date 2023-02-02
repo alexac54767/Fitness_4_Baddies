@@ -56,17 +56,17 @@
 
 <table>
   <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
+    <th>Name</th>
     <th>Total Hours</th>
+    <th>Date Completed</th>
     <th>Grade</th>
     <th> </th>
     <th> </th>
   </tr>
   <tr>
-    <td>Alexa</td>
-    <td>Carlson</td>
+    <td>Alexa Carlson</td>
     <td>5</td>
+    <td>1/25/2023</td>
     <td>B</td>
     <td>Edit</td>
     <td>Delete</td>
