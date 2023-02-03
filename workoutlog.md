@@ -25,7 +25,7 @@
   <input type="date" id="datework" name="date" value="1/8"><br>
   <label for="numhours">Duration of workout (hours):</label><br>
   <input type="hours" id="hourswork" name="hours" value="10"><br><br>
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" onclick="addRow()">
 </form> 
 
 </body>
@@ -51,7 +51,7 @@
 
 <h2 style="text-align:center">Workout Log</h2>
 
-<table>
+<table id="mytable">
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
@@ -73,7 +73,33 @@
 </table>
 
 
-<!---><table>
+
+
+<script>
+  function addRow() {
+      // Get the table element in which you want to add row
+      let table = document.getElementById("mytable");
+   
+      // Create a row using the inserRow() method and
+      // specify the index where you want to add the row
+      let row = table.insertRow(-1); // We are adding at the end
+   
+      // Create table cells
+      let c1 = row.insertCell(0);
+      let c2 = row.insertCell(1);
+      let c3 = row.insertCell(2);
+   
+      // Add data to c1 and c2
+      c1.innerText = "Elon"
+      c2.innerText = 45
+      c3.innerText = "Houston"
+   }
+</script>
+
+
+
+<!--->
+<table>
   <thead>
   <tr>
    <th>Name</th>
