@@ -12,6 +12,120 @@ from werkzeug.security import generate_password_hash, check_password_hash
 ''' Tutorial: https://www.sqlalchemy.org/library.html#tutorials, try to get into Python shell and follow along '''
 
 # Define the workouts class to manage actions in 'workouts' table,  with a relationship to 'users' table
+class ISPE(db.Model):
+    __tablename__ = 'ISPE'
+
+    # Define the Notes schema
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text, unique=False, nullable=False)
+    duration = db.Column(db.Integer, unique=False, nullable=False)
+    date = db.Column(db.Date)
+    grade = db.Column(db.Text, unique=False, nullable=False)
+
+    
+    # Define a relationship in Notes Schema to userID who originates the note, many-to-one (many notes to one user)
+    userID = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    # Constructor of a Notes object, initializes of instance variables within object
+    def __init__(self, id, name, duration, date, grade):
+        self.userID = id
+        self.name = name
+        self.duration = duration
+        self.date = date
+        self.grade = grade
+        
+
+    # Returns a string representation of the Notes object, similar to java toString()
+    # returns string
+    #def __repr__(self):
+        #return "Notes(" + str(self.id) + "," + self.note + "," + str(self.userID) + ")"
+
+    # CRUD create, adds a new record to the Notes table
+    # returns the object added or None in case of an error
+    def create(self):
+        try:
+            # creates a Notes object from Notes(db.Model) class, passes initializers
+            db.session.add(self)  # add prepares to persist person object to Notes table
+            db.session.commit()  # SqlAlchemy "unit of work pattern" requires a manual commit
+            return self
+        except IntegrityError:
+            db.session.remove()
+            return None
+
+    # CRUD read, returns dictionary representation of Notes object
+    # returns dictionary
+    def read(self):
+        # encode image
+        #path = app.config['UPLOAD_FOLDER']
+        #file = os.path.join(path, self.image)
+        #file_text = open(file, 'rb')
+        #file_read = file_text.read()
+        #file_encode = base64.encodebytes(file_read)
+        
+        return {
+            "id": self.id,
+            "userID": self.userID,
+            "name": self.name,
+            "duration": self.duration,
+            "date": self.date,
+            "grade": self.grade
+        }
+
+
+# Define the inspo class to manage actions in 'inspo' table,  with a relationship to 'users' table
+class inspo(db.Model):
+    __tablename__ = 'inspo'
+
+    # Define the Notes schema
+    id = db.Column(db.Integer, primary_key=True)
+    quote = db.Column(db.Text, unique=False, nullable=False)
+    
+
+    
+    # Define a relationship in Notes Schema to userID who originates the note, many-to-one (many notes to one user)
+    userID = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    # Constructor of a Notes object, initializes of instance variables within object
+    def __init__(self, id, quote):
+        self.userID = id
+        self.quote = quote
+    
+
+    # Returns a string representation of the Notes object, similar to java toString()
+    # returns string
+    #def __repr__(self):
+        #return "Notes(" + str(self.id) + "," + self.note + "," + str(self.userID) + ")"
+
+    # CRUD create, adds a new record to the Notes table
+    # returns the object added or None in case of an error
+    def create(self):
+        try:
+            # creates a Notes object from Notes(db.Model) class, passes initializers
+            db.session.add(self)  # add prepares to persist person object to Notes table
+            db.session.commit()  # SqlAlchemy "unit of work pattern" requires a manual commit
+            return self
+        except IntegrityError:
+            db.session.remove()
+            return None
+
+    # CRUD read, returns dictionary representation of Notes object
+    # returns dictionary
+    def read(self):
+        # encode image
+        #path = app.config['UPLOAD_FOLDER']
+        #file = os.path.join(path, self.image)
+        #file_text = open(file, 'rb')
+        #file_read = file_text.read()
+        #file_encode = base64.encodebytes(file_read)
+        
+        return {
+            "id": self.id,
+            "userID": self.userID,
+            "quote": self.quote
+        }
+
+
+# Define the workouts class to manage actions in 'workouts' table,  with a relationship to 'users' table
 class workouts(db.Model):
     __tablename__ = 'workouts'
 
@@ -85,6 +199,9 @@ class User(db.Model):
 
     # Defines a relationship between User record and Notes table, one-to-many (one user to many notes)
     workouts = db.relationship("workouts", cascade='all, delete', backref='users', lazy=True)
+    inspo = db.relationship("inspo", cascade='all, delete', backref='users', lazy=True)
+    ISPE = db.relationship("ISPE", cascade='all, delete', backref='users', lazy=True)
+
 
     # constructor of a User object, initializes the instance variables within object (self)
     def __init__(self, name, uid, password="123qwerty", dob=date.today()):
@@ -148,6 +265,17 @@ class User(db.Model):
         today = date.today()
         return today.year - self._dob.year - ((today.month, today.day) < (self._dob.month, self._dob.day))
     
+# FOR INSPO PAGE:
+    # a getter method, extracts email from object
+    @property
+    def quote(self):
+        return self._quote
+    
+    # a setter function, allows name to be updated after initial object creation
+    @quote.setter
+    def quote(self, quote):
+        self._quote = quote
+
     # output content using str(object) in human readable form, uses getter
     # output content using json dumps, this is ready for API response
     def __str__(self):
@@ -174,7 +302,9 @@ class User(db.Model):
             "uid": self.uid,
             "dob": self.dob,
             "age": self.age,
-            "workouts": [workouts.read() for workouts in self.workouts]
+            "workouts": [workouts.read() for workouts in self.workouts],
+            "inspo": [inspo.read() for inspo in self.inspo],
+            "ISPE": [ISPE.read() for ISPE in self.ISPE]
         }
 
     # CRUD update: updates user name, password, phone
@@ -220,7 +350,9 @@ def initUsers():
             for num in range(randrange(1, 4)):
                 # note = "#### " + user.name + " note " + str(num) + ". \n Generated by test data."
                 user.workouts.append(workouts(id=user.id, exercise='burpees', duration='2', date=date(2023, 1, 20)))
-            '''add user/workouts data to table'''
+                user.inspo.append(inspo(id=user.id, quote='Hard work beats talent when talent does not work hard'))
+                user.ISPE.append(ISPE(id=user.id, name='Alexa', duration='3', date=date(2023, 2, 2), grade='A'))
+            '''add user/workouts/inspo/ISPE data to table'''
             user.create()
         except IntegrityError:
             '''fails with bad or duplicate data'''
