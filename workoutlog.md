@@ -75,30 +75,11 @@
 
 
 
-<script>
-  function addRow() {
-      // Get the table element in which you want to add row
-      let table = document.getElementById("mytable");
-   
-      // Create a row using the inserRow() method and
-      // specify the index where you want to add the row
-      let row = table.insertRow(-1); // We are adding at the end
-   
-      // Create table cells
-      let c1 = row.insertCell(0);
-      let c2 = row.insertCell(1);
-      let c3 = row.insertCell(2);
-   
-      // Add data to c1 and c2
-      c1.innerText = "Elon"
-      c2.innerText = 45
-      c3.innerText = "Houston"
-   }
-</script>
 
 
 
 <!--->
+
 <table>
   <thead>
   <tr>
@@ -109,9 +90,11 @@
   </tr>
   </thead>
   <tbody id="table">
-    <!-- javascript generated data
+
+
 </tbody>
 </table> 
+<!--->
 
 <script>
   function create_User(){
@@ -227,4 +210,3 @@ data.forEach(user => {
     table.appendChild(tr);
 });
 </script> 
-<--->
