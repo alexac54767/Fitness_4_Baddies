@@ -20,10 +20,8 @@
         }
 </style>
 <form class="box">
-  <label for="fname">First name:</label><br>
-  <input type="fname" id="fnamegrades" name="fname" value="John" id="firstinput"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="lname" id="lnamegrades" name="lname" value="Doe"><br><br>
+  <label for="name">Name:</label><br>
+  <input type="name" id="namegrades" name="name" value="John" id="firstinput"><br>
   <label for="date">Date of Completion:</label><br>
   <input type="date" id="dategrades" name="date" value="4/11"><br>
   <label for="numhours">Number of Hours Completed:</label><br>

@@ -20,7 +20,7 @@ class ISPE(db.Model):
     name = db.Column(db.Text, unique=False, nullable=False)
     duration = db.Column(db.Integer, unique=False, nullable=False)
     date = db.Column(db.Date)
-    grade = db.Column(db.Integer, unique=False, nullable=False)
+    grade = db.Column(db.Text, unique=False, nullable=False)
 
     
     # Define a relationship in Notes Schema to userID who originates the note, many-to-one (many notes to one user)
@@ -119,6 +119,8 @@ class inspo(db.Model):
         #file_encode = base64.encodebytes(file_read)
         
         return {
+            "id": self.id,
+            "userID": self.userID,
             "quote": self.quote
         }
 
@@ -350,7 +352,7 @@ def initUsers():
                 user.workouts.append(workouts(id=user.id, exercise='burpees', duration='2', date=date(2023, 1, 20)))
                 user.inspo.append(inspo(id=user.id, quote='Hard work beats talent when talent does not work hard'))
                 user.ISPE.append(ISPE(id=user.id, name='Alexa', duration='3', date=date(2023, 2, 2), grade='A'))
-            '''add user/workouts/inspo data to table'''
+            '''add user/workouts/inspo/ISPE data to table'''
             user.create()
         except IntegrityError:
             '''fails with bad or duplicate data'''

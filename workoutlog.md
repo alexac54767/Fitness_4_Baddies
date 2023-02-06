@@ -25,7 +25,7 @@
   <input type="date" id="datework" name="date" value="1/8"><br>
   <label for="numhours">Duration of workout (hours):</label><br>
   <input type="hours" id="hourswork" name="hours" value="10"><br><br>
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" onclick="addRow()">
 </form> 
 
 </body>
@@ -51,7 +51,7 @@
 
 <h2 style="text-align:center">Workout Log</h2>
 
-<table>
+<table id="mytable">
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
@@ -73,7 +73,14 @@
 </table>
 
 
-<!---><table>
+
+
+
+
+
+<!--->
+
+<table>
   <thead>
   <tr>
    <th>Name</th>
@@ -83,9 +90,11 @@
   </tr>
   </thead>
   <tbody id="table">
-    <!-- javascript generated data
+
+
 </tbody>
 </table> 
+<!--->
 
 <script>
   function create_User(){
@@ -201,4 +210,3 @@ data.forEach(user => {
     table.appendChild(tr);
 });
 </script> 
-<--->
