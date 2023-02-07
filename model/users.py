@@ -107,9 +107,9 @@ class ISPE(db.Model):
         return {
             "id": self.id,
             "userID": self.userID,
-            "name": self.name,
-            "duration": self.duration,
-            "date": self.date,
+            "name2": self.name2,
+            "duration2": self.duration2,
+            "date2": self.date2,
             "grade": self.grade
         }
 
