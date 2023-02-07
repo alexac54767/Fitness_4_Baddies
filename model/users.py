@@ -13,7 +13,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 ### ISPE
 
-# Define the workouts class to manage actions in 'workouts' table,  with a relationship to 'users' table
+# Define the ISPE class to manage actions in 'ISPE' table,  with a relationship to 'users' table
 class ISPE(db.Model):
     __tablename__ = 'ISPE'
 
