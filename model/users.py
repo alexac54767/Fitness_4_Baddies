@@ -195,7 +195,7 @@ class InputWork(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     exerciseType = db.Column(db.Text, unique=False, nullable=False)
     sets = db.Column(db.Date)
-    reps = db.Column(db.Integer, unique=False, nullable=False)
+    reps = db.Column(db.Text, unique=False, nullable=False)
 
     
     # Define a relationship in Notes Schema to userID who originates the note, many-to-one (many notes to one user)
