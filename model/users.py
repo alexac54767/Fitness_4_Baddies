@@ -93,6 +93,18 @@ class inspo(db.Model):
         self.userID = id
         self.quote = quote
     
+    # FOR INSPO PAGE:
+    # a getter method, extracts email from object
+    @property
+    def quote(self):
+        return self._quote
+    
+    # a setter function, allows name to be updated after initial object creation
+    @quote.setter
+    def quote(self, quote):
+        self._quote = quote
+
+    
 
     # Returns a string representation of the Notes object, similar to java toString()
     # returns string
@@ -331,17 +343,6 @@ class User(db.Model):
         today = date.today()
         return today.year - self._dob.year - ((today.month, today.day) < (self._dob.month, self._dob.day))
     
-# FOR INSPO PAGE:
-    # a getter method, extracts email from object
-    @property
-    def quote(self):
-        return self._quote
-    
-    # a setter function, allows name to be updated after initial object creation
-    @quote.setter
-    def quote(self, quote):
-        self._quote = quote
-
     # output content using str(object) in human readable form, uses getter
     # output content using json dumps, this is ready for API response
     def __str__(self):
