@@ -194,7 +194,7 @@ class InputWork(db.Model):
     # Define the Notes schema
     id = db.Column(db.Integer, primary_key=True)
     exerciseType = db.Column(db.Text, unique=False, nullable=False)
-    sets = db.Column(db.Date)
+    sets = db.Column(db.Text, unique=False, nullable=False)
     reps = db.Column(db.Text, unique=False, nullable=False)
 
     
