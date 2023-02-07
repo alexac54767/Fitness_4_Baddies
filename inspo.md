@@ -287,6 +287,7 @@ data.forEach(user => {
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8086/api/users"
   const url = "https://flask.nighthawkcodingsociety.com/api/users"
+  // "http://localhost:4001/"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
