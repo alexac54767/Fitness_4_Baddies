@@ -44,8 +44,8 @@ class ISPE(db.Model):
     
     # a setter function, allows name to be updated after initial object creation
     @grade.setter
-    def quote(self, grade):
-        self.grade = grade
+    def grade(self, grade):
+        self._grade = grade
 
 
         
