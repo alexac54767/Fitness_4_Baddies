@@ -19,9 +19,9 @@ class ISPE(db.Model):
 
     # Define the Notes schema
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text, unique=False, nullable=False)
-    duration = db.Column(db.Integer, unique=False, nullable=False)
-    date = db.Column(db.Date)
+    name2 = db.Column(db.Text, unique=False, nullable=False)
+    duration2 = db.Column(db.Integer, unique=False, nullable=False)
+    date2 = db.Column(db.Date)
     grade = db.Column(db.Text, unique=False, nullable=False)
 
     
@@ -29,11 +29,11 @@ class ISPE(db.Model):
     userID = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     # Constructor of a Notes object, initializes of instance variables within object
-    def __init__(self, id, name, duration, date, grade):
+    def __init__(self, id, name2, duration2, date2, grade):
         self.userID = id
-        self.name = name
-        self.duration = duration
-        self.date = date
+        self.name2 = name2
+        self.duration2 = duration2
+        self.date2 = date2
         self.grade = grade
     
     # FOR ISPE PAGE:
@@ -47,8 +47,35 @@ class ISPE(db.Model):
     def grade(self, grade):
         self._grade = grade
 
-
-        
+ # a getter method, extracts email from object
+    @property
+    def name2(self):
+        return self._name2
+    
+    # a setter function, allows name to be updated after initial object creation
+    @name2.setter
+    def name2(self, name2):
+        self._name2 = name2
+    
+     # a getter method, extracts email from object
+    @property
+    def duration2(self):
+        return self._duration2
+    
+    # a setter function, allows name to be updated after initial object creation
+    @duration2.setter
+    def duration2(self, duration2):
+        self._duration2 = duration2
+    
+     # a getter method, extracts email from object
+    @property
+    def date2(self):
+        return self._date2
+    
+    # a setter function, allows name to be updated after initial object creation
+    @date2.setter
+    def date2(self, date2):
+        self._date2 = date2
 
     # Returns a string representation of the Notes object, similar to java toString()
     # returns string
