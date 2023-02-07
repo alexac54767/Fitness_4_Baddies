@@ -35,6 +35,19 @@ class ISPE(db.Model):
         self.duration = duration
         self.date = date
         self.grade = grade
+    
+    # FOR ISPE PAGE:
+    # a getter method, extracts email from object
+    @property
+    def grade(self):
+        return self._grade
+    
+    # a setter function, allows name to be updated after initial object creation
+    @grade.setter
+    def quote(self, grade):
+        self.grade = grade
+
+
         
 
     # Returns a string representation of the Notes object, similar to java toString()
@@ -72,16 +85,6 @@ class ISPE(db.Model):
             "date": self.date,
             "grade": self.grade
         }
-# FOR ISPE PAGE:
-    # a getter method, extracts email from object
-    @property
-    def grade(self):
-        return self._grade
-    
-    # a setter function, allows name to be updated after initial object creation
-    @grade.setter
-    def quote(self, grade):
-        self.grade = grade
 
 ### INSPO 
 
