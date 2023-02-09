@@ -1,5 +1,6 @@
 {% include ispetable.html %}
 
+
 ## Grades for ISPE
 > grades sweetie
 
@@ -76,33 +77,10 @@
   </tr>
 </table>
 -->
-<style>
- button {
-            background-color: #128ca7;
-            color: black;
-            text-align: center;
-            font-size: 15px;
-            height: 75;
-            width: 500;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 15px 32px;
-            display: flex;
-            justify-content: center;
-         }
-
-</style>
-
-<br>
-<br>
-<button type="button" onclick="window.print();" class>Click here to print your report</button>
-</body>
-
-</html>
 
 
 
-<!-- STARTING HERE IS MORT'S CODE-->
+<!-- STARTING HERE IS NEW CODE-->
 
 
 <table>
@@ -131,7 +109,7 @@
     </label></p>
     <p><label>
         Number of Hours Completed:
-        <input type="text" name="hoursgrades" id="hoursgrades" required>
+        <input type="integer" name="hoursgrades" id="hoursgrades" required>
     </label></p>
     <p><label>
         Grade:
@@ -266,3 +244,29 @@
   }
 
 </script>
+
+<!-- END OF NEW CODE-->
+
+<style>
+ button {
+            background-color: #128ca7;
+            color: black;
+            text-align: center;
+            font-size: 15px;
+            height: 75;
+            width: 500;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 15px 32px;
+            display: flex;
+            justify-content: center;
+         }
+
+</style>
+
+<br>
+<br>
+<button type="button" onclick="window.print();" class>Click here to print your report</button>
+</body>
+
+</html>
