@@ -428,7 +428,7 @@ data.forEach(user => {
   </tbody>
 </table>
 
-<form action="javascript:create_quote()">
+<form action="javascript:create_user()">
     <p><label>
         Quote:
         <input type="text" name="quote" id="quote" required>
@@ -499,7 +499,7 @@ data.forEach(user => {
     });
   }
 
-  function create_quote(){
+  function create_user(){
     const body = {
         quote: document.getElementById("quote").value,
     };
