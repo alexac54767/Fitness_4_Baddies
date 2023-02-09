@@ -411,7 +411,7 @@ data.forEach(user => {
 
 
 
-</script>
+
 
 
 <p> NEW THING MY DATA </p>
@@ -428,7 +428,7 @@ data.forEach(user => {
   </tbody>
 </table>
 
-<form action="javascript:create_user()">
+<form action="javascript:create_quote()">
     <p><label>
         Quote:
         <input type="text" name="quote" id="quote" required>
@@ -442,7 +442,7 @@ data.forEach(user => {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://localhost:4001/api/users"
+  const url = "http://172.22.184.170:4002///api/users"
   //const url = "https://flask.nighthawkcodingsociety.com/api/users"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
@@ -499,7 +499,7 @@ data.forEach(user => {
     });
   }
 
-  function create_user(){
+  function create_quote(){
     const body = {
         quote: document.getElementById("quote").value,
     };
@@ -554,3 +554,4 @@ data.forEach(user => {
   }
 
 </script>
+
