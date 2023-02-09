@@ -101,15 +101,15 @@
 <form action="javascript:create_user()">
     <p><label>
         Name:
-        <input type="text" name="name" id="name" required>
+        <input type="text" name="name2" id="name2" required>
     </label></p>
     <p><label>
         Date of Completion:
-        <input type="date" name="dategrades" id="dategrades" required>
+        <input type="date" name="date2" id="date2" required>
     </label></p>
     <p><label>
         Number of Hours Completed:
-        <input type="integer" name="hoursgrades" id="hoursgrades" required>
+        <input type="integer" name="duration2" id="duration2" required>
     </label></p>
     <p><label>
         Grade:
@@ -183,9 +183,9 @@
 
   function create_user(){
     const body = {
-        name: document.getElementById("name").value,
-        dategrades: document.getElementById("dategrades").value,
-        hoursgrades: document.getElementById("hoursgrades").value,
+        name2: document.getElementById("name2").value,
+        date2: document.getElementById("date2").value,
+        duration2: document.getElementById("duration2").value,
         grade: document.getElementById("grade").value
     };
     const requestOptions = {
@@ -223,21 +223,21 @@
 
   function add_row(data) {
     const tr = document.createElement("tr");
-    const name = document.createElement("td");
-    const dategrades = document.createElement("td");
-    const hoursgrades = document.createElement("td");
+    const name2 = document.createElement("td");
+    const date2 = document.createElement("td");
+    const duration2 = document.createElement("td");
     const grade = document.createElement("td");
 
     // obtain data that is specific to the API
-    name.innerHTML = data.name; 
-    dategrades.innerHTML = data.dategrades; 
-    hoursgrades.innerHTML = data.hoursgrades; 
+    name2.innerHTML = data.name2; 
+    date2.innerHTML = data.date2; 
+    duration2.innerHTML = data.duration2; 
     grade.innerHTML = data.grade; 
 
     // add HTML to container
-    tr.appendChild(name);
-    tr.appendChild(dategrades);
-    tr.appendChild(hoursgrades);
+    tr.appendChild(name2);
+    tr.appendChild(date2);
+    tr.appendChild(duration2);
     tr.appendChild(grade);
 
     resultContainer.appendChild(tr);
