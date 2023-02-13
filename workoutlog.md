@@ -120,8 +120,8 @@
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
-  //const url = "http://localhost:8086/api/users"
-  const url = "https://flask.nighthawkcodingsociety.com/api/users"
+  const url = "http://0.0.0.0:4006/api/users"
+  //const url = "https://flask.nighthawkcodingsociety.com/api/users"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
@@ -273,10 +273,11 @@
 <script>
   function create_User(){
     // extract data from inputs
-    const name = document.getElementById("namework").value;
-    const workout = document.getElementById("workoutwork").value;
-    const date = document.getElementById("datework").value;
-    const numhours = document.getElementById("hourswork").value;
+    const fname = document.getElementById("fname").value;
+    const lname = document.getElementById("lname").value;
+    const workout = document.getElementById("workout").value;
+    const date = document.getElementById("date").value;
+    const hours = document.getElementById("hours").value;
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -285,7 +286,7 @@
         },
     };
     //url for Create API
-    const url='/crud_api/create/' + name + '/' + workout + '/' + date + '/' + numhours;
+    const url='/crud_api/create/' + fname + '/' + lname + '/' + workout + '/' + date + '/' + hours ;
     //Async fetch API call to the database to create a new user
     fetch(url, requestOptions).then(response => {
         // prepare HTML search result container for new output
