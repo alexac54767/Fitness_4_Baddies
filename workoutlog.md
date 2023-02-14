@@ -73,6 +73,180 @@
 </table>
 
 
+<table>
+  <thead>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Type of Workouts</th>
+    <th>Date Of Completion</th>
+    <th>Duration of Workout (hours)</th>
+  </tr>
+  </thead>
+  <tbody id="result">
+    <!-- javascript generated data -->
+  </tbody>
+</table>
+
+<p>Create API</p>
+
+<form action="javascript:create_user()">
+    <p><label>
+        First Name:
+        <input type="fname" name="fname" id="fname" required>
+    </label></p>
+    <p><label>
+        Last Name:
+        <input type="lname" name="lname" id="lname" required>
+    </label></p>
+    <p><label>
+        Type of Workout:
+        <input type="workout" name="workout" id="workout" required>
+    </label></p>
+    <p><label>
+        Date of Completion:
+        <input type="date" name="date" id="date" required>
+    </label></p>
+    <p><label>
+        Duration of Workout (hours):
+        <input type="hours" name="hours" id="hours">
+    </label></p>
+    <p>
+        <button>Submit</button>
+    </p>
+</form>
+
+<script>
+  // prepare HTML result container for new output
+  const resultContainer = document.getElementById("result");
+  // prepare URL's to allow easy switch from deployment and localhost
+  const url = "http://0.0.0.0:4006/api/users"
+  //const url = "https://flask.nighthawkcodingsociety.com/api/users"
+  const create_fetch = url + '/create';
+  const read_fetch = url + '/';
+
+  // Load users on page entry
+  read_users();
+
+
+  // Display User Table, data is fetched from Backend Database
+  function read_users() {
+    // prepare fetch options
+    const read_options = {
+      method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'omit', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    };
+
+    // fetch the data from API
+    fetch(read_fetch, read_options)
+      // response is a RESTful "promise" on any successful fetch
+      .then(response => {
+        // check for response errors
+        if (response.status !== 200) {
+            const errorMsg = 'Database read error: ' + response.status;
+            console.log(errorMsg);
+            const tr = document.createElement("tr");
+            const td = document.createElement("td");
+            td.innerHTML = errorMsg;
+            tr.appendChild(td);
+            resultContainer.appendChild(tr);
+            return;
+        }
+        // valid response will have json data
+        response.json().then(data => {
+            console.log(data);
+            for (let row in data) {
+              console.log(data[row]);
+              add_row(data[row]);
+            }
+        })
+    })
+    // catch fetch errors (ie ACCESS to server blocked)
+    .catch(err => {
+      console.error(err);
+      const tr = document.createElement("tr");
+      const td = document.createElement("td");
+      td.innerHTML = err;
+      tr.appendChild(td);
+      resultContainer.appendChild(tr);
+    });
+  }
+
+  function create_user(){
+    //Validate Password (must be 6-20 characters in len)
+    //verifyPassword("click");
+    const body = {
+        fname: document.getElementById("fname").value,
+        lname: document.getElementById("lname").value,
+        workout: document.getElementById("workout").value,
+        date: document.getElementById("date").value,
+        hours: document.getElementById("hours").value
+    };
+    const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+            "content-type": "application/json",
+            'Authorization': 'Bearer my-token',
+        },
+    };
+
+    // URL for Create API
+    // Fetch API call to the database to create a new user
+    fetch(create_fetch, requestOptions)
+      .then(response => {
+        // trap error response from Web API
+        if (response.status !== 200) {
+          const errorMsg = 'Database create error: ' + response.status;
+          console.log(errorMsg);
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.innerHTML = errorMsg;
+          tr.appendChild(td);
+          resultContainer.appendChild(tr);
+          return;
+        }
+        // response contains valid result
+        response.json().then(data => {
+            console.log(data);
+            //add a table row for the new/created userid
+            add_row(data);
+        })
+    })
+  }
+
+  function add_row(data) {
+    const tr = document.createElement("tr");
+    const fname = document.createElement("td");
+    const lname = document.createElement("td");
+    const workout = document.createElement("td")
+    const date = document.createElement("td");
+    const hours = document.createElement("td");
+  
+
+    // obtain data that is specific to the API
+    fname.innerHTML = data.fname; 
+    lname.innerHTML = data.lname; 
+    workout.innerHTML = data.workout.length;
+    date.innerHTML = data.date; 
+    hours.innerHTML = data.hours; 
+
+    // add HTML to container
+    tr.appendChild(fname);
+    tr.appendChild(lname);
+    tr.appendChild(workout);
+    tr.appendChild(date);
+    tr.appendChild(hours);
+
+    resultContainer.appendChild(tr);
+  }
+
+</script>
 
 
 
@@ -99,10 +273,11 @@
 <script>
   function create_User(){
     // extract data from inputs
-    const name = document.getElementById("namework").value;
-    const workout = document.getElementById("workoutwork").value;
-    const date = document.getElementById("datework").value;
-    const numhours = document.getElementById("hourswork").value;
+    const fname = document.getElementById("fname").value;
+    const lname = document.getElementById("lname").value;
+    const workout = document.getElementById("workout").value;
+    const date = document.getElementById("date").value;
+    const hours = document.getElementById("hours").value;
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -111,7 +286,7 @@
         },
     };
     //url for Create API
-    const url='/crud_api/create/' + name + '/' + workout + '/' + date + '/' + numhours;
+    const url='/crud_api/create/' + fname + '/' + lname + '/' + workout + '/' + date + '/' + hours ;
     //Async fetch API call to the database to create a new user
     fetch(url, requestOptions).then(response => {
         // prepare HTML search result container for new output
