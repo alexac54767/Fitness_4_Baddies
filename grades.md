@@ -104,11 +104,11 @@
         <input type="text" name="name2" id="name2" required>
     </label></p>
     <p><label>
-        Date of Completion:
+        Number of Hours Completed:
         <input type="date" name="date2" id="date2" required>
     </label></p>
     <p><label>
-        Number of Hours Completed:
+        Date of Completion:
         <input type="integer" name="duration2" id="duration2" required>
     </label></p>
     <p><label>
