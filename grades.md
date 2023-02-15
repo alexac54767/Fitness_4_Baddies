@@ -130,11 +130,11 @@
   const read_fetch = url + '/';
 
   // Load users on page entry
-  read_users();
+  read_ISPE();
 
 
   // Display User Table, data is fetched from Backend Database
-  function read_users() {
+  function read_ISPE() {
     // prepare fetch options
     const read_options = {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -181,7 +181,7 @@
     });
   }
 
-  function create_user(){
+  function create_ISPE(){
     const body = {
         name2: document.getElementById("name2").value,
         date2: document.getElementById("date2").value,
