@@ -98,7 +98,7 @@
 </table>
 
 
-<form action="javascript:create_user()">
+<form action="javascript:create_ISPE()">
     <p><label>
         Name:
         <input type="text" name="name2" id="name2" required>
