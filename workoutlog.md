@@ -90,7 +90,7 @@
 
 <p>Create API</p>
 
-<form action="javascript:create_user()">
+<form action="javascript:create_workout()">
     <p><label>
         First Name:
         <input type="fname" name="fname" id="fname" required>
