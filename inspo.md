@@ -12,7 +12,7 @@
     <img src="https://user-images.githubusercontent.com/111482658/219490933-b938f844-9f32-4ab1-a7cf-5e6c63f6fbc8.png" alt="mindset quote" style="width:100%">
   </div>
   <div class="column">
-    <img src="(https://user-images.githubusercontent.com/111482658/219490931-ff8620a5-687a-464b-a384-34ae24a681b3.jpg" alt="keep going quote" style="width:100%">
+    <img src="https://user-images.githubusercontent.com/111482658/219490931-ff8620a5-687a-464b-a384-34ae24a681b3.jpg" alt="keep going quote" style="width:100%">
   </div>
 </div>
 <div class="row">
