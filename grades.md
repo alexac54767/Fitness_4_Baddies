@@ -87,8 +87,8 @@
   <thead>
   <tr>
     <th>Name</th>
-    <th>Total Hours</th>
     <th>Date Completed</th>
+    <th>Total Hours</th>
     <th>Grade</th>
   </tr>
   </thead>
@@ -98,7 +98,7 @@
 </table>
 
 
-<form action="javascript:create_user()">
+<form action="javascript:create_ISPE()">
     <p><label>
         Name:
         <input type="text" name="name2" id="name2" required>
@@ -124,17 +124,17 @@
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://172.31.81.86:4002/api/ISPE"
+  const url = "http://172.31.81.86:8086/api/ISPE"
   //const url = "https://flask.nighthawkcodingsociety.com/api/users"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
   // Load users on page entry
-  read_users();
+  read_ISPE();
 
 
   // Display User Table, data is fetched from Backend Database
-  function read_users() {
+  function read_ISPE() {
     // prepare fetch options
     const read_options = {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -181,7 +181,7 @@
     });
   }
 
-  function create_user(){
+  function create_ISPE(){
     const body = {
         name2: document.getElementById("name2").value,
         date2: document.getElementById("date2").value,

@@ -90,7 +90,7 @@
 
 <p>Create API</p>
 
-<form action="javascript:create_user()">
+<form action="javascript:create_workout()">
     <p><label>
         First Name:
         <input type="fname" name="fname" id="fname" required>
@@ -120,17 +120,17 @@
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://0.0.0.0:4006/api/users"
+  const url = "http://172.22.186.118:8086//api/workout"
   //const url = "https://flask.nighthawkcodingsociety.com/api/users"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
   // Load users on page entry
-  read_users();
+  read_workout();
 
 
   // Display User Table, data is fetched from Backend Database
-  function read_users() {
+  function read_workout() {
     // prepare fetch options
     const read_options = {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -177,7 +177,7 @@
     });
   }
 
-  function create_user(){
+  function create_workout(){
     //Validate Password (must be 6-20 characters in len)
     //verifyPassword("click");
     const body = {
@@ -268,8 +268,6 @@
 
 </tbody>
 </table> 
-<!--->
-
 <script>
   function create_User(){
     // extract data from inputs
