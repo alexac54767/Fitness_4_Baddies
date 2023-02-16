@@ -190,7 +190,7 @@
     // obtain data that is specific to the API
     fname.innerHTML = data.fname; 
     lname.innerHTML = data.lname; 
-    workout.innerHTML = data.workout.length;
+    workout.innerHTML = data.workout;
     date.innerHTML = data.date; 
     hours.innerHTML = data.hours; 
 
