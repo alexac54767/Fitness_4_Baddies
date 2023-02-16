@@ -9,23 +9,23 @@
 <h1 style="text-align:center">Motivational Quotes!</h1>
 <div class="row"> 
   <div class="column">
-    <img src="/images/mindsetquote.png" alt="mindset quote" style="width:100%">
+    <img src="https://user-images.githubusercontent.com/111482658/219490933-b938f844-9f32-4ab1-a7cf-5e6c63f6fbc8.png" alt="mindset quote" style="width:100%">
   </div>
   <div class="column">
-    <img src="/images/keepgoingquote.jpg" alt="keep going quote" style="width:100%">
+    <img src="(https://user-images.githubusercontent.com/111482658/219490931-ff8620a5-687a-464b-a384-34ae24a681b3.jpg" alt="keep going quote" style="width:100%">
   </div>
 </div>
 <div class="row">
     <div class="column">
-    <img src="/images/hardquote.png" alt="hard quote" style="width:100%">
+    <img src="https://user-images.githubusercontent.com/111482658/219490926-70c75633-ab4c-4315-9d00-26a37e67cb4c.png" alt="hard quote" style="width:100%">
   </div>
   <div class="column">
-    <img src="/images/progressquote.png" alt="progress quote" style="width:100%">
+    <img src="https://user-images.githubusercontent.com/111482658/219490936-23ca6bbf-5178-403a-b096-be8fbd833233.png" alt="progress quote" style="width:100%">
   </div>
  </div> 
 <div class="row"> 
   <div class="column">
-    <img src="/images/riskit.png" alt="mindset quote" style="width:100%">
+    <img src="https://user-images.githubusercontent.com/111482658/219490940-66d1a950-cd2f-4c25-846b-66babdcba103.png" alt="mindset quote" style="width:100%">
   </div>
  </div> 
 
