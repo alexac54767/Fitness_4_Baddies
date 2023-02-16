@@ -1,7 +1,6 @@
 {% include workouts.html %}
 
 
-{% include workouts.html %}
 
 # Climbing Workout
 
@@ -49,18 +48,6 @@ Rest for 1 minute between sets / exercise
 | 15 | Crunches with Legs 90 Degrees | 
 | 16 | Penguins | 
 
-<br> 
-
-## JUMP STATION
-
-|Exercise # | Exercise | Sets |  Reps |
-|-----------|----------|-------------|------|
-| 1 | Lift and Hold - Straight Leg | 3 | 10 |
-| 2 | Lift and Hold - Cat Jump | 3 | 10 |
-| 3 | Lift and Hold - High V to T | 3 | 10 |
-| 4 | Stretch Right, Left, Middle Splits | N/A | N/A |
-| 5 | T-Jumps & Cat Jumps | 1 | 10 |
-| 6 | Routine Jumps | 1 | 10 |
 
 <br>
 
