@@ -51,7 +51,7 @@
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://172.31.81.86:8086//api/Inputworkout"
+  const url = "http://10.8.140.23:8086/api/Inputworkout"
   //const url = "https://flask.nighthawkcodingsociety.com/api/users"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
