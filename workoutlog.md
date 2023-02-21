@@ -58,7 +58,7 @@
 <table>
   <thead>
   <tr>
-    <th> First Name</th>
+    <th>First Name</th>
     <th>Last Name</th>
     <th>Type of Workout</th>
     <th>Date of Completion</th>
@@ -78,7 +78,7 @@
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://192.168.187.190:8086/api/workout"
+  const url = "http://192.168.179.112:8086/api/workout"
   //const url = "https://flask.nighthawkcodingsociety.com/api/users"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
