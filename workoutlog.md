@@ -19,15 +19,15 @@
 <form action="javascript:create_workout()">
     <p><label>
         First Name:
-        <input type="text" name="fname" id="fname" required>
+        <input type="text" name="first" id="first" required>
     </label></p>
     <p><label>
         Last Name:
-        <input type="text" name="lname" id="lname" required>
+        <input type="text" name="last" id="last" required>
     </label></p>
     <p><label>
         Type of Workout:
-        <input type="text" name="workout" id="workout" required>
+        <input type="text" name="workouttype" id="workouttype" required>
     </label></p>
     <p><label>
         Date of Completion:
@@ -35,7 +35,7 @@
     </label></p>
     <p><label>
         Duration of Workout (hours):
-        <input type="integer" name="hours" id="hours">
+        <input type="integer" name="duration" id="duration">
     </label></p>
     <p>
         <button>Submit</button>
@@ -62,7 +62,7 @@
     <th>Last Name</th>
     <th>Type of Workout</th>
     <th>Date of Completion</th>
-    <th>Duruation of Workout (hours)</th>
+    <th>Duration of Workout (hours)</th>
   </tr>
   </thead>
   <tbody id="result">
@@ -139,11 +139,11 @@
     //Validate Password (must be 6-20 characters in len)
     //verifyPassword("click");
     const body = {
-        fname: document.getElementById("fname").value,
-        lname: document.getElementById("lname").value,
-        workout: document.getElementById("workout").value,
+        first: document.getElementById("first").value,
+        last: document.getElementById("last").value,
+        workouttype: document.getElementById("workouttype").value,
         date: document.getElementById("date").value,
-        hours: document.getElementById("hours").value
+        duration: document.getElementById("duration").value
     };
     const requestOptions = {
         method: 'POST',
@@ -180,26 +180,26 @@
 
   function add_row(data) {
     const tr = document.createElement("tr");
-    const fname = document.createElement("td");
-    const lname = document.createElement("td");
-    const workout = document.createElement("td")
+    const first = document.createElement("td");
+    const last = document.createElement("td");
+    const workouttype = document.createElement("td")
     const date = document.createElement("td");
-    const hours = document.createElement("td");
+    const duration = document.createElement("td");
   
 
     // obtain data that is specific to the API
-    fname.innerHTML = data.fname; 
-    lname.innerHTML = data.lname; 
-    workout.innerHTML = data.workout;
+    first.innerHTML = data.first; 
+    last.innerHTML = data.last; 
+    workouttype.innerHTML = data.workouttype;
     date.innerHTML = data.date; 
-    hours.innerHTML = data.hours; 
+    duration.innerHTML = data.duration; 
 
     // add HTML to container
-    tr.appendChild(fname);
-    tr.appendChild(lname);
-    tr.appendChild(workout);
+    tr.appendChild(first);
+    tr.appendChild(last);
+    tr.appendChild(workouttype);
     tr.appendChild(date);
-    tr.appendChild(hours);
+    tr.appendChild(duration);
 
     resultContainer.appendChild(tr);
   }
