@@ -19,11 +19,11 @@
 <form action="javascript:create_workout()">
     <p><label>
         First Name:
-        <input type="text" name="first" id="first" required>
+        <input type="text" name="fname" id="fname" required>
     </label></p>
     <p><label>
         Last Name:
-        <input type="text" name="last" id="last" required>
+        <input type="text" name="lname" id="lname" required>
     </label></p>
     <p><label>
         Type of Workout:
@@ -139,8 +139,8 @@
     //Validate Password (must be 6-20 characters in len)
     //verifyPassword("click");
     const body = {
-        first: document.getElementById("first").value,
-        last: document.getElementById("last").value,
+        fname: document.getElementById("fname").value,
+        lname: document.getElementById("lname").value,
         workouttype: document.getElementById("workouttype").value,
         date: document.getElementById("date").value,
         duration: document.getElementById("duration").value
@@ -180,23 +180,23 @@
 
   function add_row(data) {
     const tr = document.createElement("tr");
-    const first = document.createElement("td");
-    const last = document.createElement("td");
+    const fname = document.createElement("td");
+    const lname = document.createElement("td");
     const workouttype = document.createElement("td")
     const date = document.createElement("td");
     const duration = document.createElement("td");
   
 
     // obtain data that is specific to the API
-    first.innerHTML = data.first; 
-    last.innerHTML = data.last; 
+    fname.innerHTML = data.fname; 
+    lname.innerHTML = data.lname; 
     workouttype.innerHTML = data.workouttype;
     date.innerHTML = data.date; 
     duration.innerHTML = data.duration; 
 
     // add HTML to container
-    tr.appendChild(first);
-    tr.appendChild(last);
+    tr.appendChild(fname);
+    tr.appendChild(lname);
     tr.appendChild(workouttype);
     tr.appendChild(date);
     tr.appendChild(duration);
