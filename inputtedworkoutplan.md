@@ -28,15 +28,16 @@
     <!-- javascript generated data -->
   </tbody>
 </table>
-<form action="javascript:create_user()">
+
+<form action="javascript:create_inputworkout()">
     <p><label>
         Exercise Type:
-        <input type="exerciseType" name="exerciseType" id=
+        <input type="text" name="exerciseType" id=
         "exerciseType" required>
     </label></p>
     <p><label>
         Number of Sets:
-        <input type="sets" name="sets" id="sets" required>
+        <input type="integer" name="sets" id="sets" required>
     </label></p>
     <p><label>
         Number of Repetitions:
@@ -56,9 +57,9 @@
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
   // Load users on page entry
-  read_inputworkouts();
+  read_inputworkout();
   // Display User Table, data is fetched from Backend Database
-  function read_inputworkouts() {
+  function read_inputworkout() {
     // prepare fetch options
     const read_options = {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -153,9 +154,11 @@
     tr.appendChild(exerciseType);
     tr.appendChild(sets);
     tr.appendChild(reps);
+
     resultContainer.appendChild(tr);
   }
 </script>
+
 <!-- END OF NEW -->
 
 
