@@ -1,7 +1,9 @@
 ## Workout Log
 > Log your workouts below!
 
+
 <body>
+
 
 <h2 style="text-align:center">Input the Duration of Your Workout Below</h2>
 <style>
@@ -42,18 +44,25 @@
     </p>
 </form>
 
+
 </body>
 
 
+
+
 <br>
 <br>
 <br>
+
+
 
 
 <!--<script src="myscripts.js"></script>-->
 <!---form action="/action_page.php"--->
 
+
 <h2 style="text-align:center">Workout Log</h2>
+
 
 <table>
   <thead>
@@ -74,17 +83,25 @@
 
 
 
+
+
+
+
+
 <script>
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://192.168.179.112:8086/api/workout"
+  const url = "http://192.168.182.135:8086/api/workout"
   //const url = "https://flask.nighthawkcodingsociety.com/api/users"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
+
   // Load users on page entry
   read_workout();
+
+
 
 
   // Display User Table, data is fetched from Backend Database
@@ -99,6 +116,7 @@
         'Content-Type': 'application/json'
       },
     };
+
 
     // fetch the data from API
     fetch(read_fetch, read_options)
@@ -135,6 +153,7 @@
     });
   }
 
+
   function create_workout(){
     //Validate Password (must be 6-20 characters in len)
     //verifyPassword("click");
@@ -153,6 +172,7 @@
             'Authorization': 'Bearer my-token',
         },
     };
+
 
     // URL for Create API
     // Fetch API call to the database to create a new user
@@ -178,6 +198,7 @@
     })
   }
 
+
   function add_row(data) {
     const tr = document.createElement("tr");
     const fname = document.createElement("td");
@@ -185,14 +206,16 @@
     const workouttype = document.createElement("td")
     const date = document.createElement("td");
     const duration = document.createElement("td");
-  
+ 
+
 
     // obtain data that is specific to the API
-    fname.innerHTML = data.fname; 
-    lname.innerHTML = data.lname; 
+    fname.innerHTML = data.fname;
+    lname.innerHTML = data.lname;
     workouttype.innerHTML = data.workouttype;
-    date.innerHTML = data.date; 
-    duration.innerHTML = data.duration; 
+    date.innerHTML = data.date;
+    duration.innerHTML = data.duration;
+
 
     // add HTML to container
     tr.appendChild(fname);
@@ -201,10 +224,11 @@
     tr.appendChild(date);
     tr.appendChild(duration);
 
+
     resultContainer.appendChild(tr);
   }
 
-</script>
 
+</script>
 
 
