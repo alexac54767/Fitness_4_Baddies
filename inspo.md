@@ -123,8 +123,8 @@
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://172.22.184.170:8086/api/Inspo"
-  //const url = "https://flask.nighthawkcodingsociety.com/api/users"
+  //const url = "http://172.22.184.170:8086/api/Inspo"
+  const url = "https://teambaddieflask.duckdns.org/api/Inspo"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
