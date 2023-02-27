@@ -1,7 +1,9 @@
 ## Workout Log
 > Log your workouts below!
 
+
 <body>
+
 
 <h2 style="text-align:center">Input the Duration of Your Workout Below</h2>
 <style>
@@ -27,7 +29,7 @@
     </label></p>
     <p><label>
         Type of Workout:
-        <input type="text" name="workout" id="workout" required>
+        <input type="text" name="workouttype" id="workouttype" required>
     </label></p>
     <p><label>
         Date of Completion:
@@ -35,34 +37,41 @@
     </label></p>
     <p><label>
         Duration of Workout (hours):
-        <input type="integer" name="hours" id="hours">
+        <input type="integer" name="duration" id="duration">
     </label></p>
     <p>
         <button>Submit</button>
     </p>
 </form>
 
+
 </body>
 
 
+
+
 <br>
 <br>
 <br>
+
+
 
 
 <!--<script src="myscripts.js"></script>-->
 <!---form action="/action_page.php"--->
 
+
 <h2 style="text-align:center">Workout Log</h2>
+
 
 <table>
   <thead>
   <tr>
-    <th> First Name</th>
+    <th>First Name</th>
     <th>Last Name</th>
     <th>Type of Workout</th>
     <th>Date of Completion</th>
-    <th>Duruation of Workout (hours)</th>
+    <th>Duration of Workout (hours)</th>
   </tr>
   </thead>
   <tbody id="result">
@@ -74,17 +83,25 @@
 
 
 
+
+
+
+
+
 <script>
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://172.31.81.86:8086/api/workout"
+  const url = "http://192.168.182.135:8086/api/workout"
   //const url = "https://flask.nighthawkcodingsociety.com/api/users"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
+
   // Load users on page entry
   read_workout();
+
+
 
 
   // Display User Table, data is fetched from Backend Database
@@ -99,6 +116,7 @@
         'Content-Type': 'application/json'
       },
     };
+
 
     // fetch the data from API
     fetch(read_fetch, read_options)
@@ -135,15 +153,16 @@
     });
   }
 
+
   function create_workout(){
     //Validate Password (must be 6-20 characters in len)
     //verifyPassword("click");
     const body = {
         fname: document.getElementById("fname").value,
         lname: document.getElementById("lname").value,
-        workout: document.getElementById("workout").value,
+        workouttype: document.getElementById("workouttype").value,
         date: document.getElementById("date").value,
-        hours: document.getElementById("hours").value
+        duration: document.getElementById("duration").value
     };
     const requestOptions = {
         method: 'POST',
@@ -153,6 +172,7 @@
             'Authorization': 'Bearer my-token',
         },
     };
+
 
     // URL for Create API
     // Fetch API call to the database to create a new user
@@ -178,33 +198,37 @@
     })
   }
 
+
   function add_row(data) {
     const tr = document.createElement("tr");
     const fname = document.createElement("td");
     const lname = document.createElement("td");
-    const workout = document.createElement("td")
+    const workouttype = document.createElement("td")
     const date = document.createElement("td");
-    const hours = document.createElement("td");
-  
+    const duration = document.createElement("td");
+ 
+
 
     // obtain data that is specific to the API
-    fname.innerHTML = data.fname; 
-    lname.innerHTML = data.lname; 
-    workout.innerHTML = data.workout;
-    date.innerHTML = data.date; 
-    hours.innerHTML = data.hours; 
+    fname.innerHTML = data.fname;
+    lname.innerHTML = data.lname;
+    workouttype.innerHTML = data.workouttype;
+    date.innerHTML = data.date;
+    duration.innerHTML = data.duration;
+
 
     // add HTML to container
     tr.appendChild(fname);
     tr.appendChild(lname);
-    tr.appendChild(workout);
+    tr.appendChild(workouttype);
     tr.appendChild(date);
-    tr.appendChild(hours);
+    tr.appendChild(duration);
+
 
     resultContainer.appendChild(tr);
   }
 
-</script>
 
+</script>
 
 
