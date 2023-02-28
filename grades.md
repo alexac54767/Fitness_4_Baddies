@@ -109,7 +109,7 @@
     </label></p>
     <p><label>
         Number of Hours Completed:
-        <input type="integer" name="duration2" id="duration2" required>
+        <input type="number" name="duration2" id="duration2" required>
     </label></p>
     <p><label>
         Grade:
@@ -159,15 +159,16 @@
       .then(response => {
         // check for response errors
         if (response.status !== 200) {
-            const errorMsg = 'Database read error: ' + response.status;
-            console.log(errorMsg);
-            const tr = document.createElement("tr");
-            const td = document.createElement("td");
-            td.innerHTML = errorMsg;
-            tr.appendChild(td);
-            resultContainer.appendChild(tr);
-            return;
+          const errorMsg = 'Database read error: ' + response.status;
+          console.log(errorMsg);
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.innerHTML = errorMsg;
+          tr.appendChild(td);
+          resultContainer.appendChild(tr);
+          return;
         }
+        
         // valid response will have json data
         response.json().then(data => {
             console.log(data);
@@ -209,6 +210,13 @@
     fetch(create_fetch, requestOptions)
       .then(response => {
         // trap error response from Web API
+        if (response.status == 211) {
+          alert('Name is missing, or is less than 2 characters, please refresh and enter a valid name')
+        }
+        if (response.status == 212) {
+          alert('Duration is missing, or is not an integer, please enter a valid duration')
+        }
+
         if (response.status !== 200) {
           const errorMsg = 'Database create error: ' + response.status;
           console.log(errorMsg);
