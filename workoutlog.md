@@ -92,8 +92,8 @@
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
-  //const url = "http://192.168.182.135:8086/api/workout"
-  const url = "https://teambaddieflask.duckdns.org/api/workout"
+  const url = "http://192.168.182.135:8086/api/workout"
+  //const url = "https://flask.nighthawkcodingsociety.com/api/users"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
@@ -230,5 +230,6 @@
 
 
 </script>
+
 
 
