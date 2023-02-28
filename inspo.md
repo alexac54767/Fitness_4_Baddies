@@ -198,9 +198,9 @@
     fetch(create_fetch, requestOptions)
       .then(response => {
         // trap error response from Web API
-         if (response.status == 210) {
-          alert('Quote is too short, please refresh and enter a longer quote'); // alert if quote is too short
-        }
+         //if (response.status == 210) {
+          //alert('Quote is too short, please refresh and enter a longer quote'); // alert if quote is too short
+        //}
         if (response.status !== 200) {
           const errorMsg = 'Database adding quote error: ' + response.status;
           console.log(errorMsg);
