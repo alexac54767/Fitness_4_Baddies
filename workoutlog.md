@@ -1,77 +1,12 @@
-## Workout Log
-> Log your workouts below!
-
-
-<body>
-
-
-<h2 style="text-align:center">Input the Duration of Your Workout Below</h2>
-<style>
-    form {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            background-color: #4682B4;
-            border: white;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-        }
-</style>
-<form action="javascript:create_workout()">
-    <p><label>
-        First Name:
-        <input type="text" name="fname" id="fname" required>
-    </label></p>
-    <p><label>
-        Last Name:
-        <input type="text" name="lname" id="lname" required>
-    </label></p>
-    <p><label>
-        Type of Workout:
-        <input type="text" name="workouttype" id="workouttype" required>
-    </label></p>
-    <p><label>
-        Date of Completion:
-        <input type="date" name="date" id="date" required>
-    </label></p>
-    <p><label>
-        Duration of Workout (hours):
-        <input type="integer" name="duration" id="duration">
-    </label></p>
-    <p>
-        <button>Submit</button>
-    </p>
-</form>
-
-
-</body>
-
-
-
-
-<br>
-<br>
-<br>
-
-
-
-
-<!--<script src="myscripts.js"></script>-->
-<!---form action="/action_page.php"--->
-
-
-<h2 style="text-align:center">Workout Log</h2>
 
 
 <table>
   <thead>
   <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
+    <th>Name</th>
+    <th>Date Completed</th>
+    <th>Total Hours</th>
     <th>Type of Workout</th>
-    <th>Date of Completion</th>
-    <th>Duration of Workout (hours)</th>
   </tr>
   </thead>
   <tbody id="result">
@@ -80,28 +15,39 @@
 </table>
 
 
-
-
-
-
-
-
-
+<form action="javascript:create_workout()">
+    <p><label>
+        Name:
+        <input type="text" name="name3" id="name3" required>
+    </label></p>
+    <p><label>
+        Date of Completion:
+        <input type="date" name="date" id="date" required>
+    </label></p>
+    <p><label>
+        Number of Hours Completed:
+        <input type="integer" name="duration" id="duration" required>
+    </label></p>
+    <p><label>
+        Type of Workout:
+        <input type="text" name="type" id="type" required>
+    </label></p>
+    <p>
+        <button>Submit</button>
+    </p>
+</form>
 
 <script>
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
-  //const url = "http://192.168.182.135:8086/api/workout"
-  const url = "https://teambaddieflask.duckdns.org/api/workout"
+  //const url = "http://172.31.51.55:8081/api/workout"
+  const url = "https://teambaddieflask.duckdns.org"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
-
   // Load users on page entry
   read_workout();
-
-
 
 
   // Display User Table, data is fetched from Backend Database
@@ -116,7 +62,6 @@
         'Content-Type': 'application/json'
       },
     };
-
 
     // fetch the data from API
     fetch(read_fetch, read_options)
@@ -153,16 +98,12 @@
     });
   }
 
-
   function create_workout(){
-    //Validate Password (must be 6-20 characters in len)
-    //verifyPassword("click");
     const body = {
-        fname: document.getElementById("fname").value,
-        lname: document.getElementById("lname").value,
-        workouttype: document.getElementById("workouttype").value,
+        name3: document.getElementById("name3").value,
         date: document.getElementById("date").value,
-        duration: document.getElementById("duration").value
+        duration: document.getElementById("duration").value,
+        type: document.getElementById("type").value
     };
     const requestOptions = {
         method: 'POST',
@@ -172,7 +113,6 @@
             'Authorization': 'Bearer my-token',
         },
     };
-
 
     // URL for Create API
     // Fetch API call to the database to create a new user
@@ -198,37 +138,51 @@
     })
   }
 
-
   function add_row(data) {
     const tr = document.createElement("tr");
-    const fname = document.createElement("td");
-    const lname = document.createElement("td");
-    const workouttype = document.createElement("td")
+    const name3 = document.createElement("td");
     const date = document.createElement("td");
     const duration = document.createElement("td");
- 
-
+    const type = document.createElement("td");
 
     // obtain data that is specific to the API
-    fname.innerHTML = data.fname;
-    lname.innerHTML = data.lname;
-    workouttype.innerHTML = data.workouttype;
-    date.innerHTML = data.date;
-    duration.innerHTML = data.duration;
-
+    name3.innerHTML = data.name3; 
+    date.innerHTML = data.date; 
+    duration.innerHTML = data.duration; 
+    type.innerHTML = data.type; 
 
     // add HTML to container
-    tr.appendChild(fname);
-    tr.appendChild(lname);
-    tr.appendChild(workouttype);
+    tr.appendChild(name3);
     tr.appendChild(date);
     tr.appendChild(duration);
-
+    tr.appendChild(type);
 
     resultContainer.appendChild(tr);
   }
 
-
 </script>
+
+<!-- END OF NEW CODE-->
+
+<style>
+ button {
+            background-color: #128ca7;
+            color: black;
+            text-align: center;
+            font-size: 15px;
+            height: 75;
+            width: 500;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 15px 32px;
+            display: flex;
+            justify-content: center;
+         }
+
+</style>
+
+<br>
+<br>
+
 
 
