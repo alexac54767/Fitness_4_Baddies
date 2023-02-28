@@ -113,7 +113,14 @@
     </label></p>
     <p><label>
         Grade:
-        <input type="text" name="grade" id="grade" required>
+        <!--<input type="text" name="grade" id="grade" required>-->
+         <select name="Grade" id="grade">
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+      <option value="F">F</option>
+  </select>
     </label></p>
     <p>
         <button>Submit</button>
@@ -124,7 +131,7 @@
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://172.23.6.47:8081/api/ISPE/"
+  const url = "http://172.23.6.47:8081/api/ISPE"
   //const url = "https://flask.nighthawkcodingsociety.com/api/users"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
