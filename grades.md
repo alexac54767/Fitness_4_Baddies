@@ -113,7 +113,14 @@
     </label></p>
     <p><label>
         Grade:
-        <input type="text" name="grade" id="grade" required>
+        <!--<input type="text" name="grade" id="grade" required>-->
+         <select name="Grade" id="grade">
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+      <option value="F">F</option>
+  </select>
     </label></p>
     <p>
         <button>Submit</button>
