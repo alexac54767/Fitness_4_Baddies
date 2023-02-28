@@ -37,11 +37,11 @@
     </label></p>
     <p><label>
         Number of Sets:
-        <input type="integer" name="sets" id="sets" required>
+        <input type="number" name="sets" id="sets" required>
     </label></p>
     <p><label>
         Number of Repetitions:
-        <input type="integer" name="reps" id="reps" required>
+        <input type="number" name="reps" id="reps" required>
     </label></p>
     <p>
         <button>Submit</button>
@@ -123,6 +123,9 @@
     fetch(create_fetch, requestOptions)
       .then(response => {
         // trap error response from Web API
+        if (response.status == 210) {
+          alert('Exercise is not inputted, please refresh and enter an exercise')
+        }
         if (response.status !== 200) {
           const errorMsg = 'Database create error: ' + response.status;
           console.log(errorMsg);
@@ -154,7 +157,6 @@
     tr.appendChild(exerciseType);
     tr.appendChild(sets);
     tr.appendChild(reps);
-
     resultContainer.appendChild(tr);
   }
 </script>
