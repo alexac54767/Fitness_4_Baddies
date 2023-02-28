@@ -199,7 +199,7 @@
       .then(response => {
         // trap error response from Web API
          if (response.status == 210) {
-          alert('Quote is too short, please refresh and enter a longer quote')
+          alert('Quote is too short, please refresh and enter a longer quote') // alert if quote is too short
         }
         if (response.status !== 200) {
           const errorMsg = 'Database adding quote error: ' + response.status;
@@ -214,7 +214,7 @@
         // response contains valid result
         response.json().then(data => {
             console.log(data);
-            //add a table row for the new/created userid
+            //add a table row for the new/created quote
             add_row(data);
         })
     })
