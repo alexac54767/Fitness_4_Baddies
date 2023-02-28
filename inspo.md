@@ -123,8 +123,8 @@
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
-  //const url = "http://172.22.184.170:8086/api/Inspo"
-  const url = "https://teambaddieflask.duckdns.org/api/Inspo"
+  const url = "http://172.28.92.6:8081//api/Inspo"
+  //const url = "https://teambaddieflask.duckdns.org/api/Inspo"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
@@ -198,6 +198,9 @@
     fetch(create_fetch, requestOptions)
       .then(response => {
         // trap error response from Web API
+         if (response.status == 210) {
+          alert('Quote is too short, please refresh and enter a longer quote')
+        }
         if (response.status !== 200) {
           const errorMsg = 'Database adding quote error: ' + response.status;
           console.log(errorMsg);
