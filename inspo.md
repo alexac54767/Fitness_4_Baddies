@@ -94,9 +94,6 @@
 <br>
 
 
-<!--<script src="myscripts.js"></script>-->
-<!---form action="/action_page.php"--->
-
 
 <table>
   <thead>
@@ -105,7 +102,7 @@
   </tr>
   </thead>
   <tbody id="result">
-    <!-- javascript generated data -->
+
   </tbody>
 </table>
 
@@ -120,22 +117,20 @@
 </form>
 
 <script>
-  // prepare HTML result container for new output
+  // preparing container for new quote
   const resultContainer = document.getElementById("result");
-  // prepare URL's to allow easy switch from deployment and localhost
-  //const url = "http://172.28.92.6:8081//api/Inspo"
+  // url of deployed backend
   const url = "https://teambaddieflask.duckdns.org/api/Inspo"
+  // using api endpoints
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
-  // Load users on page entry
   read_Inspos();
 
 
-  // Display User Table, data is fetched from Backend Database
+  // quotes table from the backend
   function read_Inspos() {
-    // prepare fetch options
-    const read_options = {
+    const read_options = { // fetch options
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
@@ -147,9 +142,8 @@
 
     // fetch the data from API
     fetch(read_fetch, read_options)
-      // response is a RESTful "promise" on any successful fetch
       .then(response => {
-        // check for response errors
+        // error checking
         if (response.status !== 200) {
             const errorMsg = 'Database read error: ' + response.status;
             console.log(errorMsg);
@@ -160,7 +154,7 @@
             resultContainer.appendChild(tr);
             return;
         }
-        // valid response will have json data
+        // for correct responses
         response.json().then(data => {
             console.log(data);
             for (let row in data) {
@@ -169,7 +163,6 @@
             }
         })
     })
-    // catch fetch errors (ie ACCESS to server blocked)
     .catch(err => {
       console.error(err);
       const tr = document.createElement("tr");
@@ -193,14 +186,9 @@
         },
     };
 
-    // URL for Create API
-    // Fetch API call to the database to create a new user
+    // call API to make new quote
     fetch(create_fetch, requestOptions)
       .then(response => {
-        // trap error response from Web API
-         //if (response.status == 210) {
-          //alert('Quote is too short, please refresh and enter a longer quote'); // alert if quote is too short
-        //}
         if (response.status !== 200) {
           const errorMsg = 'Database adding quote error: ' + response.status;
           console.log(errorMsg);
@@ -211,10 +199,10 @@
           resultContainer.appendChild(tr);
           return;
         }
-        // response contains valid result
+        // correct response
         response.json().then(data => {
             console.log(data);
-            //add a table row for the new/created quote
+            //add a table row for the new quote
             add_row(data);
         })
     })
@@ -226,12 +214,9 @@
 
   
 
-    // obtain data that is specific to the API
+   // API data
     quote.innerHTML = data.quote; 
-  
-  
-
-    // add HTML to container
+    // HTML container
     tr.appendChild(quote);
 
     resultContainer.appendChild(tr);
